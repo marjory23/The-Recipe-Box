@@ -4,56 +4,51 @@ import IngredientInput from './IngredientInput';
 function AddRecipe({createRecipe, setPopupForm}) {
 
   const [title, setTitle] = useState('');
-  const [food, setFood] = useState('')
-  const [measure, setMeasure] = useState('')
-  const [quantity, setQuantity] = useState('')
-  const [ingredients, setIngredients] = useState('');
+  const [ingredients, setIngredients] = useState([{ food: '', quantity: '', measure: ''}]);
   const [image, setImage] = useState('');
   const [duration, setDuration] = useState('');
-  const [ingInputArr, setIngInputArr] = useState(['']);
-  const [preparation, setPreparation] = useState('')
+  const [preparation, setPreparation] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setTitle(e.target.value);
-    setIngredients(e.target.value);
     setImage(e.target.value);
+    setIngredients(ingredients)
     setDuration(e.target.value);
-    setFood(e.target.value);
+    setPreparation(e.target.value)
+
     createRecipe({
       title: title,
       ingredients: ingredients,
       image: image,
-      duration: duration
-    })
-    console.log('recipe submitted')
-    /* setTitle('');
-    setIngredients('');
-    setImage('');
-    setDuration(''); */
-    setPopupForm(false)
+      duration: duration,
+      preparation: preparation,
+    });
 
+    console.log('recipe submitted')
+    setPopupForm(false)
   };
 
+  const handleIngredientChange = (i, e) => {
+    let data = [...ingredients];
+    data[i][e.target.name] = e.target.value;
+    setIngredients(data);
+ }
+
   const addIngredientInput = () => {
-    setIngInputArr(ingInputArr => [...ingInputArr, '+']);
-    console.log(ingInputArr)
+    setIngredients(ingredients => [...ingredients, { food: '', quantity: '', measure: ''}]);
+    //console.log(ingredients)
   };
 
   const removeLastIng = () => {
-    //setIngInputArr(ingInputArr => ingInputArr.splice(ingInputArr.length-1, 1));
-   // const lastIndex = ingInputArr.length-1
-    setIngInputArr(ingInputArr => ingInputArr.filter((_, i) => i !== ingInputArr.length-1));
-    //setIngInputArr(ingInputArr => ingInputArr.filter((input) => ingInputArr.indexOf(input) !== index));
-    /* ingInputArr.splice(ingInputArr.length-1, 1)
-    setIngInputArr(ingInputArr) */
-    console.log(ingInputArr)
+    setIngredients(ingredients => ingredients.filter((_, i) => i !== ingredients.length-1));
   };
 
   return (
     <div>
       <div className='closePopup' onClick={() => setPopupForm(false)}>x</div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(i, e) => handleSubmit(i, e)}>
           <div className='input-box'>
 
             <input
@@ -65,26 +60,19 @@ function AddRecipe({createRecipe, setPopupForm}) {
             onChange={(e) => setTitle(e.target.value)}>
             </input>
 
-            <div>{ingInputArr.map((x, i) => {
+            <div>{ingredients.map((x, i) => {
               return <div key={i}>
               <IngredientInput
-              /* ingredients={ingredients}
-              setIngredients={setIngredients} */
-              food={food}
-              setFood={setFood}
-              measure={measure}
-              setMeasure={setMeasure}
-              quantity={quantity}
-              setQuantity={setQuantity}
-              ingInputArr={ingInputArr}
-              setIngInputArr={setIngInputArr}>
+                i={i}
+                ingredients={ingredients}
+                handleIngredientChange={handleIngredientChange}
+              >
               </IngredientInput>
               </div>
             })}</div>
 
             <div className='add-or-remove-last'>
-
-              {ingInputArr.length>1 && <button onClick={removeLastIng}>-</button>}
+              {ingredients.length>1 && <button onClick={removeLastIng}>-</button>}
               <button onClick={addIngredientInput}>+</button>
             </div>
 

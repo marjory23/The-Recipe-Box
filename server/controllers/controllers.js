@@ -1,6 +1,6 @@
 'use strict'
 
-const Recipe = require('./models/schema');
+const Recipe = require('../models/schema');
 
 exports.getRecipe = async (req, res) => {
   try {
@@ -19,6 +19,17 @@ exports.getRecipe = async (req, res) => {
     const result = await Recipe.create(data)
     res.send(result)
     res.status(201)
+  } catch (err) {
+    console.log('Error ' + err);
+    res.status(500);
+  }
+ }
+
+ exports.deleteRecipe = async (req, res) => {
+  try {
+    const result = await Recipe.findByIdAndDelete(req.params.id)
+    res.send(result)
+    res.status(202)
   } catch (err) {
     console.log('Error ' + err);
     res.status(500);

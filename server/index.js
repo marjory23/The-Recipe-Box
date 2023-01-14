@@ -3,12 +3,25 @@
 const Express = require('express');
 const app = Express();
 const cors = require('cors');
-const router = require('./router')
+const router = require('./router');
+const session = require('express-session');
 
 const PORT = 3000;
 
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3001",
+  methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD","DELETE"],
+  credentials: true,
+}));
 app.use(Express.json());
+
+app.use(session({
+  secret: 'my secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true },
+}))
+
 app.use(router);
 
 app.get('/', (req, res) => {

@@ -2,7 +2,7 @@ import React from 'react'
 
 function Header() {
   return (
-    <div>The Recipe Box</div>
+    <h1>The Recipe Box</h1>
   )
 }
 

@@ -1,51 +1,48 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-function IngredientInput({ ingredients, setIngredients, food, setFood, measure, setMeasure, quantity, setQuantity }) {
+function IngredientInput({ i, ingredients, handleIngredientChange }) {
 
-  /* const [food, setFood] = useState('')
-  const [measure, setMeasure] = useState('')
-  const [quantity, setQuantity] = useState('') */
-  /* food: String,
-  measure: String,
-  quantity: Number */
-
+  //console.log(ingredients);
 
   return (
     <div>
       <input
         required
         type='text'
-        value={food}
+        value={ingredients[i].food}
         name='food'
         placeholder='ingredient'
-        onChange={(e) => setFood(e.target.value)}>
+        onChange={(e) => handleIngredientChange(i, e)}
+        >
         </input>
 
         <input
         required
         type='number'
-        value={quantity}
+        value={ingredients[i].quantity}
         name='quantity'
         placeholder='quantity'
-        onChange={(e) => setQuantity(e.target.value)}>
+        onChange={(e) => handleIngredientChange(i, e)}
+        >
         </input>
 
         <select
-        /* value={this.state.value} onChange={this.handleChange}
         required
         name='measure'
-        onChange={(e) => setMeasure(e.target.value)} */
+        value={ingredients[i].measure}
+        onChange={(e) => handleIngredientChange(i, e)}
         >
+          <option value='unit'>unit</option>
+          <option value='can'>can</option>
           <option value='teaspoon'>teaspoon</option>
           <option value='tablespoon'>tablespoon</option>
           <option value='cup'>cup</option>
+          <option value='slice'>slice</option>
           <option value='ounce'>ounce</option>
           <option value='pint'>pint</option>
           <option value='quart'>quart</option>
           <option value='gallon'>gallon</option>
         </select>
-
-
 
     </div>
   )
