@@ -19,18 +19,22 @@ function App() {
   const [popupRegisterForm, setPopupRegisterForm] = useState(false);
   const [popupLoginForm, setPopupLoginForm] = useState(false);
 
-  const YOUR_APP_ID ='191b066f';
-  const YOUR_APP_KEY ='6d33790b9d5fc0e22fdf061923940ab5'
-  const BASE_URL = `https://api.edamam.com/search?q=${search}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free`
+  // const YOUR_APP_ID ='191b066f';
+  // const YOUR_APP_KEY ='6d33790b9d5fc0e22fdf061923940ab5'
+  // const BASE_URL = `https://api.edamam.com/search?q=${search}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&from=0&to=3&calories=591-722&health=alcohol-free`
+  const APP_KEY = '9973533'
+  const BASE_URL = `https://themealdb.com/api/json/v2/${APP_KEY}/filter.php?i=${search}`
 
   const fetchRecipes = async () => {
     try {
       const result = await fetch(BASE_URL, {
-        mode: 'cors'
+        //mode: 'cors'
       })
       const data = await result.json();
-      //console.log(data)
-      return data.hits;
+      console.log(data)
+      return data.meals;
+
+      //return data.hits;
 
     } catch (error) {
         console.log("error")
@@ -75,11 +79,11 @@ function App() {
     }
   }
 
-  useEffect (() => {
+  /* useEffect (() => {
       fetchMyRecipes().then(data => {
       if (data) setMyRecipes(data)
     });
-  }, [myRecipes]);
+  }, [myRecipes]); */
 
   //console.log(myRecipes[0])
 

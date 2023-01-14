@@ -11,10 +11,12 @@ function SearchRecipe({ search, setSearch, fetchRecipes, recipes, setRecipes }) 
     .then(data => {
       if (data) setRecipes(data)
     })
-    console.log(search)
-    console.log(recipes.length)
+    // console.log(search)
+    // console.log(recipes)
     setSearch('');
-}
+    }
+
+
 
   return (
     <div>
