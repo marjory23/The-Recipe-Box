@@ -1,28 +1,21 @@
 import React, { useState } from 'react'
 import RecipeItem from './RecipeItem';
+import { useNavigate, Navigate, Link } from 'react-router-dom';
 
-function Recipe({ recipe,
-  //lookupRecipe, item, setItem
-}) {
+function Recipe({ recipe, setCurrentRecipe}) {
 
-  const[popupRecipe, setPopupRecipe] = useState(false);
+  let navigate = useNavigate();
+  const openRecipe = () =>{
+    console.log(recipe)
+    setCurrentRecipe(recipe);
+    navigate('/Recipe');
+  }
 
   return (
-    <div>
+    <div onClick={openRecipe}>
+
       <img className='food-image' src={recipe.thumbnail_url}></img>
-      <h6 onClick={() => {setPopupRecipe(true)
-      // lookupRecipe(recipe.idMeal)
-      }}>{recipe.name}</h6>
-      
-
-      {/* <div><a href={recipe.recipe.url}>link</a></div> */}
-
-      {popupRecipe && <RecipeItem
-      setPopupRecipe={setPopupRecipe}
-      recipe={recipe}
-      // item={item}
-      // setItem={setItem}
-      />}
+      <h6 >{recipe.name}</h6>
 
     </div>
   )

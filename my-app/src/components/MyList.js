@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import MyRecipe from './MyRecipe'
 
-function MyList({ myRecipes, deleteRecipe }) {
+function MyList({ myRecipes, deleteRecipe, setMyRecipes, setMyCurrentRecipe }) {
 
   //console.log(myRecipes)
 
@@ -10,7 +10,11 @@ function MyList({ myRecipes, deleteRecipe }) {
       return <div key={item._id}>
         <MyRecipe
         content={item}
-        deleteRecipe={deleteRecipe}/>
+        deleteRecipe={deleteRecipe}
+        setMyRecipes={setMyRecipes}
+        myRecipes={myRecipes}
+        setMyCurrentRecipe={setMyCurrentRecipe}
+        />
     </div>
     })}</div>
   )

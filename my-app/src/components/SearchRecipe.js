@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-//import { fetchRecipes } from '../ApiService';
+import { fetchRecipes } from '../ApiService';
 
 
-function SearchRecipe({ search, setSearch, fetchRecipes, recipes, setRecipes }) {
+function SearchRecipe({ recipes, setRecipes }) {
+
+  const [search, setSearch] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSearch(e.target.value);
-    await fetchRecipes()
+    await fetchRecipes(search)
     .then(data => {
       if (data) setRecipes(data.results)
 

@@ -1,21 +1,28 @@
-import React, { useState } from 'react'
-import MyRecipePage from './MyRecipePage'
+import React, { useState } from 'react';
+import { deleteRecipe } from '../ApiService';
+import { useNavigate } from 'react-router-dom';
 
-function MyRecipe({ content, deleteRecipe }) {
+function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe }) {
 
-  const[popupRecipe, setPopupRecipe] = useState(false)
+  const deleteThis = () => {
+    const data = deleteRecipe(content._id);
+    setMyRecipes(myRecipes => myRecipes.filter(item => item.id !== data._id))
+  }
+
+  let navigate = useNavigate();
+  const openRecipe = () =>{
+    console.log(content)
+    setMyCurrentRecipe(content);
+    navigate('/MyRecipe');
+  }
 
   return (
-    <div>
-      <h6 onClick={() => setPopupRecipe(true)}>{content.title}</h6>
+    <div onClick={openRecipe}>
+
+      <h6>{content.title}</h6>
       <h6>cooking time: {content.duration}</h6>
       <img className='food-image' src={content && content.image}></img>
-      <button onClick={() => deleteRecipe(content._id)}>delete</button>
-
-      {popupRecipe && <MyRecipePage
-      setPopupRecipe={setPopupRecipe}
-      content={content}
-      />}
+      <button onClick={deleteThis}>delete</button>
 
     </div>
   )

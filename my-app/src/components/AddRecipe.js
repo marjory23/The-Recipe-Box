@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import IngredientInput from './IngredientInput';
+import { createRecipe } from '../ApiService';
 
-function AddRecipe({createRecipe, setPopupForm}) {
+function AddRecipe({ setPopupForm }) {
 
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState([{ food: '', quantity: '', measure: ''}]);
