@@ -4,6 +4,7 @@ import SearchRecipe from './SearchRecipe';
 import RecipeList from './RecipeList';
 import AddRecipe from './AddRecipe';
 import MyList from './MyList';
+import Header from './Header'
 
 function Main({ user, setCurrentRecipe, setMyCurrentRecipe }) {
 
@@ -19,8 +20,10 @@ function Main({ user, setCurrentRecipe, setMyCurrentRecipe }) {
   }, [myRecipes]);
 
   return (
-    <>
+    <div className='Main'>
       <div>hello {user.firstName}</div>
+
+      <Header></Header>
 
       <SearchRecipe
       recipes={recipes}
@@ -50,7 +53,7 @@ function Main({ user, setCurrentRecipe, setMyCurrentRecipe }) {
       />}
 
 
-    </>
+    </div>
   )
 }
 

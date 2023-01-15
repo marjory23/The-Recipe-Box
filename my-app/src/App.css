@@ -1,4 +1,9 @@
-.App {
+.Main {
+  text-align: center;
+  padding: 50px;
+}
+
+.header{
   text-align: center;
   padding: 50px;
 }
@@ -91,4 +96,8 @@ input {
 
 .right-container {
   padding-left: 50px;
+}
+
+.go-back {
+  width: 50px;
 }
