@@ -6,7 +6,7 @@ import Recipe from './Recipe'
 function RecipeList({ recipes }) {
   const ID_URL = `https://themealdb.com/api/json/v2/9973533/lookup.php?i=`;
 
-  const [item, setItem] = useState({});
+  /* const [item, setItem] = useState({});
 
   const lookupRecipe = async (id) => {
     try {
@@ -21,18 +21,19 @@ function RecipeList({ recipes }) {
     } catch (error) {
         console.log("error")
     }
-  }
+  } */
 
 
 
   return (
     <div className='recipie-container'>{recipes.map(recipe => {
-      return <div key={recipe.idMeal}>
+      return <div key={recipe.id}>
         <Recipe
         recipe={recipe}
-        lookupRecipe={lookupRecipe}
-        item={item}
-        setItem={setItem}>
+        // lookupRecipe={lookupRecipe}
+        // item={item}
+        // setItem={setItem}
+        >
 
         </Recipe>
     </div>

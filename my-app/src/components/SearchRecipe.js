@@ -9,10 +9,12 @@ function SearchRecipe({ search, setSearch, fetchRecipes, recipes, setRecipes }) 
     setSearch(e.target.value);
     await fetchRecipes()
     .then(data => {
-      if (data) setRecipes(data)
+      if (data) setRecipes(data.results)
+
     })
-    // console.log(search)
-    // console.log(recipes)
+
+    console.log(search)
+    console.log(recipes)
     setSearch('');
     }
 

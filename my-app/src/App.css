@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 50px;
 }
 
 .input-box {
@@ -41,4 +42,53 @@ input {
 .recipe-page {
   height: 100vh;
   width: 100wh;
+}
+
+.recipe-box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 50px 200px;
+  top: 200px;
+  left: 0px;
+  /* background: linear-gradient(to right, #e4aa08, #f0e6d3); */
+  background-color: #e4aa08;
+}
+
+.item-page {
+  display: flex;
+}
+
+.left-img {
+  height: 300px;
+  width: 500px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.food-image-in-item {
+  width: 100%;
+  height: 100%;
+}
+
+.ingredients {
+  font-size: 12px;
+  font-style: italic;
+  color: grey;
+}
+
+.instructions-container {
+  font-size: 18px;
+  text-align: left;
+  padding-top: 50px;
+
+}
+
+.recipe-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-container {
+  padding-left: 50px;
 }

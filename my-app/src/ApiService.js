@@ -61,3 +61,58 @@ export const logout = async (user) => {
   }
 };
 
+export const fetchRecipes = async (search) => {
+  try {
+    const result = await fetch(`https://tasty.p.rapidapi.com/recipes/list?from=0&size=6&q=${search}`, {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': '6f9a8a663amsh8a4d83fb438ce8bp17a448jsnf930468c0744',
+        'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
+      }
+    })
+    const data = await result.json();
+    console.log(data)
+    return data;
+  } catch (error) {
+      console.log("error")
+  }
+};
+
+export const createRecipe = async (content) => {
+  try  {
+    const res = await fetch('http://localhost:3000/recipes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(content)
+    })
+    return res.json()
+  } catch (e) {
+    console.log(e)
+  }
+};
+
+export const deleteRecipe = async (id) => {
+  try {
+    const data = await fetch('http://localhost:3000/recipes/' + id, {
+      method: 'DELETE',}).then(res => res.json())
+    .then(data => {
+      console.log(data)
+      //setMyRecipes(myRecipes => myRecipes.filter(item => item.id !== data._id))
+      });
+  } catch (e) {
+    console.log(e)
+  }
+};
+
+export const fetchMyRecipes = async () => {
+  try {
+    const result = await fetch('http://localhost:3000/recipes')
+    const data = await result.json();
+    //console.log(data)
+    return data;
+
+  } catch (error) {
+      console.log("error")
+  }
+};
+

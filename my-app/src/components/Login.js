@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 //import auth from '../utils/auth';
 import {login} from './../ApiService';
-//import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const initialState = {
   email: '',
   password: '',
 };
 
-const Login = (props) => {
-  //let navigate = useNavigate();
+const Login = ({ setUser }) => {
+  let navigate = useNavigate();
   const [state, setState] = useState(initialState);
 
   const handleChange = (e) => {
@@ -31,10 +31,11 @@ const Login = (props) => {
       setState(initialState);
     }
     else {
+      setUser(res);
+      navigate('/main');
+      console.log('logged in');
+      console.log(res);
 
-      setState(initialState);
-      console.log('logged in')
-      
     }
 
   };
@@ -56,7 +57,7 @@ const Login = (props) => {
         />
         <input
           type="password"
-          placeholder="supersecretthingy"
+          placeholder="password"
           name="password"
           value={state.password}
           onChange={handleChange}
