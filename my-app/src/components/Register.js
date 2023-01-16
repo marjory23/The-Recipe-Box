@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 //import auth from '../utils/auth';
 import { register } from '../ApiService';
-//import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -12,8 +12,8 @@ const initialState = {
   lastName: '',
 };
 
-const Register = (props) => {
-  //const navigate = useNavigate();
+const Register = ({ setUser }) => {
+  const navigate = useNavigate();
   const [state, setState] = useState(initialState);
 
   const handleChange = (e) => {
@@ -33,6 +33,11 @@ const Register = (props) => {
     if (res.error) {
       alert(`${res.message}`);
       setState(initialState);
+    } else {
+      setUser(res);
+      navigate('/main');
+      console.log('registered');
+      console.log(res);
     }
 
   };

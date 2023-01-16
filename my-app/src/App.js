@@ -7,6 +7,7 @@ import Login from './components/Login'
 import Main from './components/Main';
 import RecipeItem from './components/RecipeItem';
 import MyRecipePage from './components/MyRecipePage';
+import AddRecipe from './components/AddRecipe';
 
 function App() {
 
@@ -19,10 +20,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/login' element={<Login setUser={setUser}/>}/>
+        <Route path='/Register' element={<Register setUser={setUser}/>} />
+        <Route path='/main' element={<Main user={user} setCurrentRecipe={setCurrentRecipe} setMyCurrentRecipe={setMyCurrentRecipe}/>}/>
+        <Route path='/add' element={<AddRecipe/>}/>
         <Route path='/Recipe' element={<RecipeItem currentRecipe ={currentRecipe}/>}/>
         <Route path='/MyRecipe' element={<MyRecipePage currentRecipe ={myCurrentRecipe}/>}/>
-        <Route path='/Register' element={<Register />} />
-        <Route path='/main' element={<Main user={user} setCurrentRecipe={setCurrentRecipe} setMyCurrentRecipe={setMyCurrentRecipe}/>}/>
       </Routes>
     </BrowserRouter>
 

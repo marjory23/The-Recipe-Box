@@ -1,9 +1,9 @@
 .Main {
   text-align: center;
-  padding: 50px;
+  padding: 100px;
 }
 
-.header{
+.header, .create{
   text-align: center;
   padding: 50px;
 }
@@ -31,18 +31,10 @@ input {
 
 .recipie-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.navbar {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.navbar button {
-  margin: 10px;
-}
 
 .recipe-page {
   height: 100vh;
@@ -98,6 +90,18 @@ input {
   padding-left: 50px;
 }
 
-.go-back {
+.button {
   width: 50px;
+  margin-top: 10px;
+}
+
+.item-in-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.list-title {
+  text-align: left;
 }

@@ -61,9 +61,9 @@ export const logout = async (user) => {
   }
 };
 
-export const fetchRecipes = async (search) => {
+export const fetchRecipes = async (search, start, end) => {
   try {
-    const result = await fetch(`https://tasty.p.rapidapi.com/recipes/list?from=0&size=6&q=${search}`, {
+    const result = await fetch(`https://tasty.p.rapidapi.com/recipes/list?from=${start}&size=${end}&q=${search}`, {
       method: 'GET',
       headers: {
         'X-RapidAPI-Key': '6f9a8a663amsh8a4d83fb438ce8bp17a448jsnf930468c0744',

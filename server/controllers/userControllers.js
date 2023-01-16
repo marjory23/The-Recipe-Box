@@ -27,7 +27,7 @@ const create = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email: email });
+    const user = await User.findOne({ email: email }).populate('recipes');
     const validatedPass = await bcrypt.compare(password, user.password);
     if (!validatedPass) throw new Error();
     req.session.uid = user._id;

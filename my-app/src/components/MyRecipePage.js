@@ -24,12 +24,12 @@ function MyRecipePage({ currentRecipe }) {
 
             <h2>{content.title}</h2>
             {content.duration!=null &&<h6>cooking time: {content.duration}</h6>}
-            {/* <div>{content.ingredient.map((item, i)=> <p className='ingredients' key={content.id + i}>{item.raw_text}</p>)}</div> */}
+            {<div>{content.ingredients.map((item, i)=> <p className='ingredients' key={content._id + i}>{`${item.quantity} ${item.measure} ${item.food}`}</p>)}</div>}
           </div>
         </div>
         <div className='instructions-container'><p>{content.preparation}</p></div>
 
-        <button className='go-back' onClick={goBack}>back</button>
+        <button className='button' onClick={goBack}>back</button>
         </div>
     </>
 

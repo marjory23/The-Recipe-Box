@@ -1,6 +1,7 @@
 'use strict'
 
 const Recipe = require('../models/schema');
+const User = require('../models/userSchema')
 
 exports.getRecipe = async (req, res) => {
   try {
@@ -16,6 +17,7 @@ exports.getRecipe = async (req, res) => {
  exports.postRecipe = async (req, res) => {
   try {
     const data = req.body;
+    const user = User.find({ })
     const result = await Recipe.create(data)
     res.send(result)
     res.status(201)

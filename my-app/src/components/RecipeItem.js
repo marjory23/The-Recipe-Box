@@ -25,11 +25,11 @@ function RecipeItem({  currentRecipe }) {
 
             <h2>{recipe.name}</h2>
             {recipe.cook_time_minutes!=null &&<h6> cooking time: {recipe.cook_time_minutes}</h6>}
-            <div>{recipe.sections[0].components.map((item, i)=> <p className='ingredients' key={recipe.id + i}>{item.raw_text}</p>)}</div>
+            <div>{recipe.sections[0].components && recipe.sections[0].components.map((item, i)=> <p className='ingredients' key={recipe.id + i}>{item.raw_text}</p>)}</div>
           </div>
         </div>
         <div className='instructions-container'>{recipe.instructions.map((item, i)=> <p key={recipe.id + i}>{item.display_text}</p>)}</div>
-        <button className='go-back' onClick={goBack}>back</button>
+        <button className='button' onClick={goBack}>back</button>
       </div>
     </>
   )

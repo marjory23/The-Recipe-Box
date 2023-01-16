@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import IngredientInput from './IngredientInput';
 import { createRecipe } from '../ApiService';
+import { useNavigate } from 'react-router-dom';
 
 function AddRecipe({ setPopupForm }) {
 
@@ -9,6 +10,11 @@ function AddRecipe({ setPopupForm }) {
   const [image, setImage] = useState('');
   const [duration, setDuration] = useState('');
   const [preparation, setPreparation] = useState('');
+
+  const navigate = useNavigate()
+  const goBack = () => {
+    navigate(-1);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,8 +53,8 @@ function AddRecipe({ setPopupForm }) {
   };
 
   return (
-    <div>
-      <div className='closePopup' onClick={() => setPopupForm(false)}>x</div>
+    <div className='create'>
+      <button className='button' onClick={goBack}>back</button>
       <form onSubmit={(i, e) => handleSubmit(i, e)}>
           <div className='input-box'>
 
@@ -105,7 +111,7 @@ function AddRecipe({ setPopupForm }) {
             </textarea>
 
           </div>
-          <button className='create' type="submit">Create</button>
+          <button className='button' type="submit">Create</button>
         </form>
     </div>
   )

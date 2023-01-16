@@ -5,6 +5,7 @@ import RecipeList from './RecipeList';
 import AddRecipe from './AddRecipe';
 import MyList from './MyList';
 import Header from './Header'
+import { useNavigate } from 'react-router-dom';
 
 function Main({ user, setCurrentRecipe, setMyCurrentRecipe }) {
 
@@ -13,11 +14,20 @@ function Main({ user, setCurrentRecipe, setMyCurrentRecipe }) {
 
   const [popupForm, setPopupForm] = useState(false);
 
+  /* useEffect (() => {
+    setRecipes(recipes)
+  }, [recipes]); */
+
   useEffect (() => {
       fetchMyRecipes().then(data => {
       if (data) setMyRecipes(data)
     });
   }, [myRecipes]);
+
+  let navigate = useNavigate();
+  const addRecipe = () =>{
+    navigate('/add');
+  }
 
   return (
     <div className='Main'>
@@ -33,9 +43,10 @@ function Main({ user, setCurrentRecipe, setMyCurrentRecipe }) {
       {recipes.length>0 && <RecipeList
       recipes={recipes}
       setCurrentRecipe={setCurrentRecipe}
-      />}
+      />
+      }
 
-      <button onClick={() => setPopupForm(true)}>Add your recipe</button>
+      <button onClick={addRecipe}>Add your recipe</button>
 
       {popupForm &&
       <div>
