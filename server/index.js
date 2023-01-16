@@ -17,9 +17,14 @@ app.use(Express.json());
 
 app.use(session({
   secret: 'my secret',
-  resave: false,
+  // resave: false,
+
   saveUninitialized: true,
-  cookie: { secure: true },
+  cookie: {
+    secure: false,
+    sameSite: 'lax',
+    // overwrite: false
+  },
 }))
 
 app.use(router);

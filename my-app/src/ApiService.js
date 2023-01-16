@@ -25,7 +25,9 @@ export const login = async (user) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user),
     })
-    return res.json()
+    const data = await res.json()
+    console.log(data)
+    return data
   } catch (e) {
     console.log(e)
   }
@@ -83,7 +85,8 @@ export const createRecipe = async (content) => {
     const res = await fetch('http://localhost:3000/recipes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(content)
+      body: JSON.stringify(content),
+      credentials: 'include',
     })
     return res.json()
   } catch (e) {
@@ -94,7 +97,8 @@ export const createRecipe = async (content) => {
 export const deleteRecipe = async (id) => {
   try {
     const data = await fetch('http://localhost:3000/recipes/' + id, {
-      method: 'DELETE',}).then(res => res.json())
+      method: 'DELETE'
+    }).then(res => res.json())
     .then(data => {
       console.log(data)
       //setMyRecipes(myRecipes => myRecipes.filter(item => item.id !== data._id))

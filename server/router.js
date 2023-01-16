@@ -8,7 +8,7 @@ const authMiddleware = require('./middlewares/auth');
 
 router.get('/recipes', ctrl.getRecipe);
 router.post('/recipes', ctrl.postRecipe);
-router.delete('/recipes/:id', ctrl.deleteRecipe);
+router.delete('/recipes/:id', authMiddleware, ctrl.deleteRecipe);
 
 router.post('/register', userCtrl.create);
 router.post('/login', userCtrl.login);

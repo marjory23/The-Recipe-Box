@@ -3,7 +3,7 @@ import IngredientInput from './IngredientInput';
 import { createRecipe } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
 
-function AddRecipe({ setPopupForm }) {
+function AddRecipe({ setPopupForm, user, myRecipes, setMyRecipes }) {
 
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState([{ food: '', quantity: '', measure: ''}]);
@@ -25,16 +25,19 @@ function AddRecipe({ setPopupForm }) {
     setDuration(e.target.value);
     setPreparation(e.target.value)
 
-    createRecipe({
+    const newRecipe = createRecipe({
       title: title,
       ingredients: ingredients,
       image: image,
       duration: duration,
       preparation: preparation,
+      email: user.email,
     });
+    //setMyRecipes([...myRecipes, newRecipe])
 
     console.log('recipe submitted')
-    setPopupForm(false)
+    //setPopupForm(false)
+    navigate(-1)
   };
 
   const handleIngredientChange = (i, e) => {

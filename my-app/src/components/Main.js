@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { createRecipe, deleteRecipe, fetchMyRecipes } from '../ApiService';
+import { createRecipe,
+  //deleteRecipe,
+  fetchMyRecipes } from '../ApiService';
 import SearchRecipe from './SearchRecipe';
 import RecipeList from './RecipeList';
 import AddRecipe from './AddRecipe';
@@ -12,17 +14,25 @@ function Main({ user, setCurrentRecipe, setMyCurrentRecipe }) {
   const [recipes, setRecipes] = useState([]);
   const [myRecipes, setMyRecipes] = useState([]);
 
-  const [popupForm, setPopupForm] = useState(false);
+  //const [popupForm, setPopupForm] = useState(false);
 
   /* useEffect (() => {
     setRecipes(recipes)
   }, [recipes]); */
 
-  useEffect (() => {
+ /*  useEffect (() => {
       fetchMyRecipes().then(data => {
       if (data) setMyRecipes(data)
     });
-  }, [myRecipes]);
+  }, [myRecipes]); */
+
+   useEffect (() => {
+    if(user.recipes) {
+    setMyRecipes([...user.recipes])
+    }
+  }, []);
+
+  console.log(myRecipes)
 
   let navigate = useNavigate();
   const addRecipe = () =>{
@@ -48,18 +58,20 @@ function Main({ user, setCurrentRecipe, setMyCurrentRecipe }) {
 
       <button onClick={addRecipe}>Add your recipe</button>
 
-      {popupForm &&
+      {/* {popupForm &&
       <div>
         <AddRecipe
         createRecipe={createRecipe}
-        setPopupForm={setPopupForm}/>
-      </div>}
+        myRecipes={myRecipes}
+        setMyRecipes={setMyRecipes}/>
+      </div>} */}
 
       {myRecipes.length>0 && <MyList
       myRecipes={myRecipes}
       setMyRecipes={setMyRecipes}
       fetchMyRecipes={fetchMyRecipes}
-      deleteRecipe={deleteRecipe}
+      user={user}
+      //deleteRecipe={deleteRecipe}
       setMyCurrentRecipe={setMyCurrentRecipe}
       />}
 

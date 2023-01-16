@@ -30,8 +30,13 @@ const login = async (req, res) => {
     const user = await User.findOne({ email: email }).populate('recipes');
     const validatedPass = await bcrypt.compare(password, user.password);
     if (!validatedPass) throw new Error();
+
     req.session.uid = user._id;
-    console.log(req.session.uid)
+    req.session.email = user.email;
+
+    console.log(req.session);
+    console.log(req.session.id);
+
     res.status(200).send(user);
   } catch (error) {
     res

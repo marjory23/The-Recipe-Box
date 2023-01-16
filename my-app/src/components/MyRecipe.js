@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { deleteRecipe } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
 
-function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe }) {
+function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe, user }) {
   console.log(content);
 
   const deleteThis = () => {
@@ -18,10 +18,13 @@ function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe }) {
   }
 
   return (
-    <div className='item-in-list' onClick={openRecipe}>
+    <div className='item-in-list'>
 
-      <h6>{content.title}</h6>
-      <img className='food-image' src={content && content.image}></img>
+      <div onClick={openRecipe}>
+        <h6>{content.title}</h6>
+        <img className='food-image' src={content && content.image}></img>
+      </div>
+
       <button className='button' onClick={deleteThis}>delete</button>
 
     </div>

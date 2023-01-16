@@ -11,7 +11,7 @@ import AddRecipe from './components/AddRecipe';
 
 function App() {
 
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
   const [currentRecipe, setCurrentRecipe] = useState({});
   const [myCurrentRecipe, setMyCurrentRecipe] = useState({});
 
@@ -22,7 +22,7 @@ function App() {
         <Route path='/login' element={<Login setUser={setUser}/>}/>
         <Route path='/Register' element={<Register setUser={setUser}/>} />
         <Route path='/main' element={<Main user={user} setCurrentRecipe={setCurrentRecipe} setMyCurrentRecipe={setMyCurrentRecipe}/>}/>
-        <Route path='/add' element={<AddRecipe/>}/>
+        <Route path='/add' element={<AddRecipe user={user}/>}/>
         <Route path='/Recipe' element={<RecipeItem currentRecipe ={currentRecipe}/>}/>
         <Route path='/MyRecipe' element={<MyRecipePage currentRecipe ={myCurrentRecipe}/>}/>
       </Routes>
