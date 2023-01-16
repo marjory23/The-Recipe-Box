@@ -3,11 +3,13 @@ import { deleteRecipe } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
 
 function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe, user }) {
-  console.log(content);
+  // console.log(content);
 
   const deleteThis = () => {
     const data = deleteRecipe(content._id);
+    // console.log('DATA ' + data)
     setMyRecipes(myRecipes => myRecipes.filter(item => item.id !== data._id))
+
   }
 
   let navigate = useNavigate();

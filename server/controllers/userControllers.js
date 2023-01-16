@@ -17,6 +17,7 @@ const create = async (req, res) => {
     });
     const user = await newUser.save();
     req.session.uid = user._id;
+    req.session.email = user.email;
     res.status(201).send(user);
   } catch (error) {
     res.status(400).send({ error, message: 'Could not create user' });

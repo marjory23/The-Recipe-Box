@@ -97,7 +97,8 @@ export const createRecipe = async (content) => {
 export const deleteRecipe = async (id) => {
   try {
     const data = await fetch('http://localhost:3000/recipes/' + id, {
-      method: 'DELETE'
+      method: 'DELETE',
+      credentials: 'include',
     }).then(res => res.json())
     .then(data => {
       console.log(data)

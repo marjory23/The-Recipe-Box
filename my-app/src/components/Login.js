@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 //import auth from '../utils/auth';
 import {login} from './../ApiService';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
 
 const initialState = {
   email: '',
@@ -32,41 +33,47 @@ const Login = ({ setUser }) => {
     }
     else {
       setUser(res);
-      navigate('/main');
+      navigate('/');
       console.log('logged in');
       console.log(res);
-
     }
-
   };
+
+  const goToRegister = () => {
+    navigate('/register')
+  }
 
   const validateForm = () => {
     return !state.email || !state.password;
   };
 
   return (
-    <section>
-      <h2>Login</h2>
-      <form className="form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="name@mail.com"
-          name="email"
-          value={state.email}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          name="password"
-          value={state.password}
-          onChange={handleChange}
-        />
-        <button className="form-submit" type="submit" disabled={validateForm()}>
-          &nbsp;Login&nbsp;
-        </button>
-      </form>
-    </section>
+    <>
+      <Header></Header>
+      <section>
+        <h2>Login</h2>
+        <form className="form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="name@mail.com"
+            name="email"
+            value={state.email}
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            placeholder="password"
+            name="password"
+            value={state.password}
+            onChange={handleChange}
+          />
+          <button className="form-submit" type="submit" disabled={validateForm()}>
+            &nbsp;Login&nbsp;
+          </button>
+        </form>
+        <div onClick={goToRegister}>or create an account</div>
+      </section>
+    </>
   );
 };
 

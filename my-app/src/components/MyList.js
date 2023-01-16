@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import MyRecipe from './MyRecipe'
 
 function MyList({ myRecipes, user,
@@ -7,11 +7,15 @@ function MyList({ myRecipes, user,
 
   //console.log(myRecipes)
 
+  /* const [list, setList] = useState(myRecipes)
 
+  useEffect(()=> setList(myRecipes),[]) */
 
   return (
     <div>
+      {/* {myRecipes.length>0 && */}
       <div className='list-title'><h2>My Recipes List</h2></div>
+      {/* } */}
       <div className='recipie-container'>{myRecipes.map((item) => {
         return <div key={item._id}>
           <MyRecipe

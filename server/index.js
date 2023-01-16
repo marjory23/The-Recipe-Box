@@ -16,6 +16,7 @@ app.use(cors({
 app.use(Express.json());
 
 app.use(session({
+  name: 'sid',
   secret: 'my secret',
   // resave: false,
 
@@ -23,7 +24,7 @@ app.use(session({
   cookie: {
     secure: false,
     sameSite: 'lax',
-    // overwrite: false
+    overwrite: false
   },
 }))
 

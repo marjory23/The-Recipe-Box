@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 //import auth from '../utils/auth';
 import { register } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
 
 
 
@@ -35,7 +36,7 @@ const Register = ({ setUser }) => {
       setState(initialState);
     } else {
       setUser(res);
-      navigate('/main');
+      navigate('/');
       console.log('registered');
       console.log(res);
     }
@@ -49,42 +50,45 @@ const Register = ({ setUser }) => {
   };
 
   return (
-    <section>
-      <h2>Register</h2>
-      <form className="form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="name@mail.com"
-          name="email"
-          value={state.email}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          placeholder="supersecretthingy"
-          name="password"
-          value={state.password}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="Name"
-          name="firstName"
-          value={state.firstName}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          placeholder="Nameson"
-          name="lastName"
-          value={state.lastName}
-          onChange={handleChange}
-        />
-        <button className="form-submit" type="submit" disabled={validateForm()}>
-          &nbsp;Register&nbsp;
-        </button>
-      </form>
-    </section>
+    <>
+      <Header></Header>
+      <section>
+        <h2>Register</h2>
+        <form className="form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="name@mail.com"
+            name="email"
+            value={state.email}
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            placeholder="supersecretthingy"
+            name="password"
+            value={state.password}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            placeholder="Name"
+            name="firstName"
+            value={state.firstName}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            placeholder="Nameson"
+            name="lastName"
+            value={state.lastName}
+            onChange={handleChange}
+          />
+          <button className="form-submit" type="submit" disabled={validateForm()}>
+            &nbsp;Register&nbsp;
+          </button>
+        </form>
+      </section>
+    </>
   );
 };
 

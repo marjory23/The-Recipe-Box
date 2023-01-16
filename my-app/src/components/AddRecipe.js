@@ -3,7 +3,9 @@ import IngredientInput from './IngredientInput';
 import { createRecipe } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
 
-function AddRecipe({ setPopupForm, user, myRecipes, setMyRecipes }) {
+function AddRecipe({ user,  setMyRecipes,
+  //setPopupForm, popupForm
+}) {
 
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState([{ food: '', quantity: '', measure: ''}]);
@@ -11,12 +13,13 @@ function AddRecipe({ setPopupForm, user, myRecipes, setMyRecipes }) {
   const [duration, setDuration] = useState('');
   const [preparation, setPreparation] = useState('');
 
+  const recipes = user.recipes
   const navigate = useNavigate()
   const goBack = () => {
     navigate(-1);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setTitle(e.target.value);
@@ -25,7 +28,7 @@ function AddRecipe({ setPopupForm, user, myRecipes, setMyRecipes }) {
     setDuration(e.target.value);
     setPreparation(e.target.value)
 
-    const newRecipe = createRecipe({
+    const newRecipe = await createRecipe({
       title: title,
       ingredients: ingredients,
       image: image,
@@ -33,11 +36,16 @@ function AddRecipe({ setPopupForm, user, myRecipes, setMyRecipes }) {
       preparation: preparation,
       email: user.email,
     });
-    //setMyRecipes([...myRecipes, newRecipe])
+    // console.log(user)
+    console.log(recipes)
+    // console.log(newRecipe)
 
+    //setMyRecipes(recipes => [...recipes, newRecipe])
+    recipes.push(newRecipe)
+    console.log(recipes)
     console.log('recipe submitted')
     //setPopupForm(false)
-    navigate(-1)
+    navigate('/')
   };
 
   const handleIngredientChange = (i, e) => {
@@ -58,7 +66,7 @@ function AddRecipe({ setPopupForm, user, myRecipes, setMyRecipes }) {
   return (
     <div className='create'>
       <button className='button' onClick={goBack}>back</button>
-      <form onSubmit={(i, e) => handleSubmit(i, e)}>
+      <form onSubmit={(e) => handleSubmit(e)}>
           <div className='input-box'>
 
             <input

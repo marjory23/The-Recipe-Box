@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { createRecipe,
-  //deleteRecipe,
+import {
+  //createRecipe, deleteRecipe,
   fetchMyRecipes } from '../ApiService';
 import SearchRecipe from './SearchRecipe';
 import RecipeList from './RecipeList';
-import AddRecipe from './AddRecipe';
+//import AddRecipe from './AddRecipe';
 import MyList from './MyList';
 import Header from './Header'
 import { useNavigate } from 'react-router-dom';
 
-function Main({ user, setCurrentRecipe, setMyCurrentRecipe }) {
+function Main({ user, setCurrentRecipe, setMyCurrentRecipe,
+  myRecipes, setMyRecipes, setPopupForm, popupForm
+}) {
 
   const [recipes, setRecipes] = useState([]);
-  const [myRecipes, setMyRecipes] = useState([]);
+  // const [myRecipes, setMyRecipes] = useState([]);
 
-  //const [popupForm, setPopupForm] = useState(false);
+  // const [popupForm, setPopupForm] = useState(false);
 
   /* useEffect (() => {
     setRecipes(recipes)
@@ -25,18 +27,33 @@ function Main({ user, setCurrentRecipe, setMyCurrentRecipe }) {
       if (data) setMyRecipes(data)
     });
   }, [myRecipes]); */
+  let navigate = useNavigate()
 
-   useEffect (() => {
-    if(user.recipes) {
-    setMyRecipes([...user.recipes])
+  useEffect(() => {
+    if(!user.email) {
+   navigate('/login')
+
     }
-  }, []);
+  }, [user.email, navigate]);
 
-  console.log(myRecipes)
 
-  let navigate = useNavigate();
+  useEffect (() => {
+    console.log(user)
+    if(user.recipes) {
+    setMyRecipes(user.recipes)
+    }
+  }, );
+
+
+
+
+
   const addRecipe = () =>{
     navigate('/add');
+  }
+
+  const logout = () =>{
+    navigate('/logout');
   }
 
   return (
@@ -44,6 +61,7 @@ function Main({ user, setCurrentRecipe, setMyCurrentRecipe }) {
       <div>hello {user.firstName}</div>
 
       <Header></Header>
+      <button onClick={logout}>logout</button>
 
       <SearchRecipe
       recipes={recipes}
@@ -61,19 +79,20 @@ function Main({ user, setCurrentRecipe, setMyCurrentRecipe }) {
       {/* {popupForm &&
       <div>
         <AddRecipe
-        createRecipe={createRecipe}
-        myRecipes={myRecipes}
-        setMyRecipes={setMyRecipes}/>
+        // setPopupForm={setPopupForm}
+        // myRecipes={myRecipes}
+        // setMyRecipes={setMyRecipes}
+        />
       </div>} */}
 
-      {myRecipes.length>0 && <MyList
+      <MyList
       myRecipes={myRecipes}
       setMyRecipes={setMyRecipes}
       fetchMyRecipes={fetchMyRecipes}
       user={user}
       //deleteRecipe={deleteRecipe}
       setMyCurrentRecipe={setMyCurrentRecipe}
-      />}
+      />
 
 
     </div>
