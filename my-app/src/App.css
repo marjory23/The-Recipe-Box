@@ -23,6 +23,8 @@
 input {
   height: 15px;
   margin: 5px;
+  border-radius: 5px;
+  border: 0.5px;
 }
 
 .add-or-remove-last {
@@ -104,4 +106,23 @@ input {
 
 .list-title {
   text-align: left;
+}
+
+.form {
+  max-width: 40vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: auto;
+
+}
+
+.form-submit {
+  border: 0;
+  margin: 10px 70px;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background: #8fafad;
+  color: #fafafa;
+  font-size: 1rem;
 }

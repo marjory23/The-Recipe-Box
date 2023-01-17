@@ -50,12 +50,13 @@ const Login = ({ setUser }) => {
   return (
     <>
       <Header></Header>
+      <div></div>
       <section>
         <h2>Login</h2>
         <form className="form" onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="name@mail.com"
+            placeholder="email"
             name="email"
             value={state.email}
             onChange={handleChange}
@@ -71,7 +72,8 @@ const Login = ({ setUser }) => {
             &nbsp;Login&nbsp;
           </button>
         </form>
-        <div onClick={goToRegister}>or create an account</div>
+        <div>or create an account</div>
+        <button className="form-submit" onClick={goToRegister}>Register</button>
       </section>
     </>
   );

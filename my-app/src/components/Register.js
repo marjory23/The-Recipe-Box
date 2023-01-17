@@ -36,7 +36,7 @@ const Register = ({ setUser }) => {
       setState(initialState);
     } else {
       setUser(res);
-      navigate('/');
+      navigate('/login');
       console.log('registered');
       console.log(res);
     }
@@ -57,28 +57,28 @@ const Register = ({ setUser }) => {
         <form className="form" onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="name@mail.com"
+            placeholder="email"
             name="email"
             value={state.email}
             onChange={handleChange}
           />
           <input
             type="password"
-            placeholder="supersecretthingy"
+            placeholder="password"
             name="password"
             value={state.password}
             onChange={handleChange}
           />
           <input
             type="text"
-            placeholder="Name"
+            placeholder="first name"
             name="firstName"
             value={state.firstName}
             onChange={handleChange}
           />
           <input
             type="text"
-            placeholder="Nameson"
+            placeholder="last name"
             name="lastName"
             value={state.lastName}
             onChange={handleChange}

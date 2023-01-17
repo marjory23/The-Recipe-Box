@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import IngredientInput from './IngredientInput';
 import { createRecipe } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
-
+import Header from './Header';
 function AddRecipe({ user, setUser }) {
 
   const [title, setTitle] = useState('');
@@ -63,67 +63,71 @@ function AddRecipe({ user, setUser }) {
   };
 
   return (
-    <div className='create'>
-      <button className='button' onClick={goBack}>back</button>
-      <form onSubmit={(e) => handleSubmit(e)}>
-          <div className='input-box'>
+    <>
+      <Header></Header>
+      <div className='hello'>hello {user.firstName}</div>
+      <div className='create'>
+        <button className='button' onClick={goBack}>back</button>
+        <form onSubmit={(e) => handleSubmit(e)}>
+            <div className='input-box'>
 
-            <input
-            required
-            type='text'
-            value={title}
-            name='title'
-            placeholder='title'
-            onChange={(e) => setTitle(e.target.value)}>
-            </input>
+              <input
+              required
+              type='text'
+              value={title}
+              name='title'
+              placeholder='title'
+              onChange={(e) => setTitle(e.target.value)}>
+              </input>
 
-            <div>{ingredients.map((x, i) => {
-              return <div key={i}>
-              <IngredientInput
-                i={i}
-                ingredients={ingredients}
-                handleIngredientChange={handleIngredientChange}
-              >
-              </IngredientInput>
+              <div>{ingredients.map((x, i) => {
+                return <div key={i}>
+                <IngredientInput
+                  i={i}
+                  ingredients={ingredients}
+                  handleIngredientChange={handleIngredientChange}
+                >
+                </IngredientInput>
+                </div>
+              })}</div>
+
+              <div className='add-or-remove-last'>
+                {ingredients.length>1 && <button onClick={removeLastIng}>-</button>}
+                <button onClick={addIngredientInput}>+</button>
               </div>
-            })}</div>
 
-            <div className='add-or-remove-last'>
-              {ingredients.length>1 && <button onClick={removeLastIng}>-</button>}
-              <button onClick={addIngredientInput}>+</button>
+              <input
+              required
+              type='text'
+              value={image}
+              name='image'
+              placeholder='image'
+              onChange={(e) => setImage(e.target.value)}>
+              </input>
+
+              <input
+              required
+              type='text'
+              value={duration}
+              name='duration'
+              placeholder='duration'
+              onChange={(e) => setDuration(e.target.value)}>
+              </input>
+
+              <textarea
+              required
+              type='text'
+              value={preparation}
+              name='preparation'
+              placeholder='preparation'
+              onChange={(e) => setPreparation(e.target.value)}>
+              </textarea>
+
             </div>
-
-            <input
-            required
-            type='text'
-            value={image}
-            name='image'
-            placeholder='image'
-            onChange={(e) => setImage(e.target.value)}>
-            </input>
-
-            <input
-            required
-            type='text'
-            value={duration}
-            name='duration'
-            placeholder='duration'
-            onChange={(e) => setDuration(e.target.value)}>
-            </input>
-
-            <textarea
-            required
-            type='text'
-            value={preparation}
-            name='preparation'
-            placeholder='preparation'
-            onChange={(e) => setPreparation(e.target.value)}>
-            </textarea>
-
-          </div>
-          <button className='button' type="submit" disabled={disabled}>Create</button>
-        </form>
-    </div>
+            <button className='button' type="submit" disabled={disabled}>Create</button>
+          </form>
+      </div>
+    </>
   )
 }
 

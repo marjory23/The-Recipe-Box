@@ -1,8 +1,8 @@
 import React from 'react';
 //import auth from '../utils/auth';
 import { logout } from '../ApiService';
-
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
 
   const Logout = ({ setUser }) => {
 
@@ -20,13 +20,16 @@ import { useNavigate } from 'react-router-dom';
     }
 
   return (
-    <div>
-      <h2>Are you sure you want to log out?</h2>
+    <>
+      <Header></Header>
+      <div>
+        <h2>Are you sure you want to log out?</h2>
 
-      <button onClick={goBack}>No</button>
+        <button onClick={goBack}>No</button>
 
-      <button onClick={() => handleClick()}>Yes</button>
-    </div>
+        <button onClick={() => handleClick()}>Yes</button>
+      </div>
+    </>
   );
 };
 

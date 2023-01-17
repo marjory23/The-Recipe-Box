@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { deleteRecipe } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
 
 function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe, user, setUser }) {
 
@@ -28,16 +29,17 @@ function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe, user, 
   }
 
   return (
-    <div className='item-in-list'>
+    <>
+      <div className='item-in-list'>
+        <div onClick={openRecipe}>
+          <h6>{content.title}</h6>
+          <img className='food-image' src={content && content.image}></img>
+        </div>
 
-      <div onClick={openRecipe}>
-        <h6>{content.title}</h6>
-        <img className='food-image' src={content && content.image}></img>
+        <button className='button' onClick={deleteThis}>delete</button>
+
       </div>
-
-      <button className='button' onClick={deleteThis}>delete</button>
-
-    </div>
+    </>
   )
 }
 

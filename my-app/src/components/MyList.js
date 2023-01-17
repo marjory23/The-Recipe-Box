@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MyRecipe from './MyRecipe';
 import { useNavigate } from 'react-router-dom';
+import Header from './Header';
 
 function MyList({ user, setUser, setMyCurrentRecipe }) {
   const [myRecipes, setMyRecipes] = useState(user.recipes);
@@ -23,6 +24,9 @@ function MyList({ user, setUser, setMyCurrentRecipe }) {
 
   return (
     <div>
+
+      <Header></Header>
+      <div className='hello'>hello {user.firstName}</div>
       {/* {myRecipes.length>0 && */}
       <div className='list-title'><h2>My Recipes List</h2></div>
       {/* } */}

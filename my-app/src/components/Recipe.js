@@ -12,13 +12,15 @@ function Recipe({ recipe, setCurrentRecipe}) {
   }
 
   return (
-    <div onClick={openRecipe}>
+    <>
+      <div onClick={openRecipe}>
 
-      <img className='food-image' src={recipe.thumbnail_url}></img>
-      <h6 >{recipe.name}</h6>
+        <img className='food-image' src={recipe.thumbnail_url}></img>
+        <h6 >{recipe.name}</h6>
 
-    </div>
-  )
+      </div>
+    </>
+    )
 }
 
 export default Recipe

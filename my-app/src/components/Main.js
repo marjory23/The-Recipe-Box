@@ -29,9 +29,10 @@ function Main({ user, setCurrentRecipe, recipes, setRecipes
 
   return (
     <div className='Main'>
-      <div>hello {user.firstName}</div>
+
 
       <Header></Header>
+      <div className='hello'>hello {user.firstName}</div>
       <button onClick={logout}>logout</button>
 
       <SearchRecipe
