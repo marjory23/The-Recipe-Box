@@ -9,6 +9,7 @@ import RecipeItem from './components/RecipeItem';
 import MyRecipePage from './components/MyRecipePage';
 import AddRecipe from './components/AddRecipe';
 import Logout from './components/Logout';
+import MyList from './components/MyList';
 
 
 function App() {
@@ -27,18 +28,34 @@ function App() {
       <Routes>
         <Route path='/login' element={<Login setUser={setUser}/>}/>
         <Route path='/Register' element={<Register setUser={setUser}/>} />
-        <Route path='/' element={<Main user={user} setCurrentRecipe={setCurrentRecipe} setMyCurrentRecipe={setMyCurrentRecipe}
-        myRecipes={myRecipes} setMyRecipes={setMyRecipes}
+
+        <Route path='/' element={<Main user={user}
+        setCurrentRecipe={setCurrentRecipe}
+        setMyCurrentRecipe={setMyCurrentRecipe}
+        myRecipes={myRecipes}
+        setMyRecipes={setMyRecipes}
         setPopupForm={setPopupForm}
         popupForm={popupForm}
         recipes={recipes}
         setRecipes={setRecipes}
         />}/>
-        <Route path='/add' element={<AddRecipe user={user}
-        myRecipes={myRecipes} setMyRecipes={setMyRecipes}
+
+        <Route path='/mylist' element={<MyList
+        myRecipes={myRecipes}
+        setMyRecipes={setMyRecipes}
+        user={user}
+        setMyCurrentRecipe={setMyCurrentRecipe}
+         />}/>
+
+        <Route path='/add' element={<AddRecipe
+        user={user}
+        setUser={setUser}
+        myRecipes={myRecipes}
+        setMyRecipes={setMyRecipes}
         setPopupForm={setPopupForm}
         popupForm={popupForm}
         />}/>
+
         <Route path='/Recipe' element={<RecipeItem currentRecipe ={currentRecipe}/>}/>
         <Route path='/MyRecipe' element={<MyRecipePage currentRecipe ={myCurrentRecipe}/>}/>
         <Route path='/logout' element={<Logout setUser={setUser}/>}/>

@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import MyRecipe from './MyRecipe'
+import MyRecipe from './MyRecipe';
+
+import { fetchMyRecipes } from '../ApiService';
+import { useNavigate } from 'react-router-dom';
 
 function MyList({ myRecipes, user,
   //deleteRecipe,
@@ -10,6 +13,21 @@ function MyList({ myRecipes, user,
   /* const [list, setList] = useState(myRecipes)
 
   useEffect(()=> setList(myRecipes),[]) */
+
+  let navigate = useNavigate()
+
+  useEffect (() => {
+    console.log(user)
+    if(user.recipes) {
+     setMyRecipes(user.recipes)
+    }
+  },[myRecipes] );
+
+  const addRecipe = () =>{
+    navigate('/add');
+  }
+
+
   return (
     <div>
       {/* {myRecipes.length>0 && */}
@@ -27,6 +45,8 @@ function MyList({ myRecipes, user,
           />
       </div>
       })}</div>
+
+      <button onClick={addRecipe}>Add your recipe</button>
 
     </div>
   )

@@ -5,7 +5,7 @@ import { fetchRecipes } from '../ApiService';
 function SearchRecipe({ recipes, setRecipes }) {
 
   const [search, setSearch] = useState('');
-  const [start, setStart] = useState(0);
+  const [start, setStart] = useState(2);
   const [end, setEnd] = useState(10);
 
   const handleSubmit = async (e) => {

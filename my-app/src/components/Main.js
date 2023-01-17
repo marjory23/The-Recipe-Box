@@ -38,19 +38,23 @@ function Main({ user, setCurrentRecipe, setMyCurrentRecipe,
   }, [user.email, navigate]);
 
 
-  useEffect (() => {
+  /* useEffect (() => {
     console.log(user)
     if(user.recipes) {
     setMyRecipes(user.recipes)
     }
-  }, );
+  }, ); */
 
-  
+
 
 
 
   const addRecipe = () =>{
     navigate('/add');
+  }
+
+  const goToMyRecipesList = () =>{
+    navigate('/mylist');
   }
 
   const logout = () =>{
@@ -86,14 +90,16 @@ function Main({ user, setCurrentRecipe, setMyCurrentRecipe,
         />
       </div>} */}
 
-      <MyList
+      <button onClick={goToMyRecipesList}>My Recipes List</button>
+
+      {/* <MyList
       myRecipes={myRecipes}
       setMyRecipes={setMyRecipes}
       fetchMyRecipes={fetchMyRecipes}
       user={user}
       //deleteRecipe={deleteRecipe}
       setMyCurrentRecipe={setMyCurrentRecipe}
-      />
+      /> */}
 
 
     </div>

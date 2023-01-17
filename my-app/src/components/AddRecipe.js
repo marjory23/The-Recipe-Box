@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import IngredientInput from './IngredientInput';
 import { createRecipe } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
 
-function AddRecipe({ user,  setMyRecipes,
+function AddRecipe({ user, setUser
   //setPopupForm, popupForm
 }) {
 
@@ -12,15 +12,18 @@ function AddRecipe({ user,  setMyRecipes,
   const [image, setImage] = useState('');
   const [duration, setDuration] = useState('');
   const [preparation, setPreparation] = useState('');
+  const [disabled, setDisabled] = useState(false);
 
-  const recipes = user.recipes
   const navigate = useNavigate()
   const goBack = () => {
     navigate(-1);
   }
 
+  // useEffect(() => console.log(myRecipes), [myRecipes])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setDisabled(true);
 
     setTitle(e.target.value);
     setImage(e.target.value);
@@ -37,15 +40,18 @@ function AddRecipe({ user,  setMyRecipes,
       email: user.email,
     });
     // console.log(user)
-    console.log(recipes)
+    console.log(newRecipe)
     // console.log(newRecipe)
 
-    //setMyRecipes(recipes => [...recipes, newRecipe])
-    recipes.push(newRecipe)
-    console.log(recipes)
+    setUser(user => ({
+      ...user,
+      recipes: [...user.recipes, newRecipe]
+    }))
+    // recipes.push(newRecipe)
+    // console.log(recipes)
     console.log('recipe submitted')
     //setPopupForm(false)
-    navigate('/')
+    setTimeout(() => navigate('/mylist'), 1000)
   };
 
   const handleIngredientChange = (i, e) => {
@@ -122,7 +128,7 @@ function AddRecipe({ user,  setMyRecipes,
             </textarea>
 
           </div>
-          <button className='button' type="submit">Create</button>
+          <button className='button' type="submit" disabled={disabled}>Create</button>
         </form>
     </div>
   )
