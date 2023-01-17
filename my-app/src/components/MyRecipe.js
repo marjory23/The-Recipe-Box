@@ -2,24 +2,25 @@ import React, { useState,useEffect } from 'react';
 import { deleteRecipe } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
 
-function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe, user, }) {
-  // console.log(content);
+function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe, user, setUser }) {
 
-  useEffect(() => {
-    console.log(myRecipes,setMyRecipes)
-  }, [])
 
+  let navigate = useNavigate();
 
   const deleteThis = async () => {
     const data = await deleteRecipe(content._id);
     console.log( data)
-    const x = myRecipes.filter((item) => {return item._id !== data._id})
+    console.log(user)
+    const x = user.recipes.filter((item) => {return item._id !== data._id})
     console.log(x)
     setMyRecipes([...x])
 
+    setUser(user => ({
+      ...user,
+      recipes: [...x]
+    }))
   }
 
-  let navigate = useNavigate();
   const openRecipe = () =>{
     console.log(content)
     setMyCurrentRecipe(content);

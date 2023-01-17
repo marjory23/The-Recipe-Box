@@ -1,32 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import MyRecipe from './MyRecipe';
-
-import { fetchMyRecipes } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
 
-function MyList({ myRecipes, user,
-  //deleteRecipe,
-  setMyRecipes, setMyCurrentRecipe }) {
-
-  //console.log(myRecipes)
-
-  /* const [list, setList] = useState(myRecipes)
-
-  useEffect(()=> setList(myRecipes),[]) */
+function MyList({ user, setUser, setMyCurrentRecipe }) {
+  const [myRecipes, setMyRecipes] = useState(user.recipes);
 
   let navigate = useNavigate()
 
   useEffect (() => {
     console.log(user)
-    if(user.recipes) {
-     setMyRecipes(user.recipes)
-    }
+
+
   },[myRecipes] );
 
   const addRecipe = () =>{
     navigate('/add');
   }
 
+  const backToSearch = () =>{
+    navigate('/');
+  }
 
   return (
     <div>
@@ -37,16 +30,17 @@ function MyList({ myRecipes, user,
         return <div key={item._id}>
           <MyRecipe
           content={item}
-          //deleteRecipe={deleteRecipe}
           setMyRecipes={setMyRecipes}
           myRecipes={myRecipes}
           setMyCurrentRecipe={setMyCurrentRecipe}
           user={user}
+          setUser={setUser}
           />
       </div>
       })}</div>
 
       <button onClick={addRecipe}>Add your recipe</button>
+      <button onClick={backToSearch}>back to search</button>
 
     </div>
   )

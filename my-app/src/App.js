@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css';
 import { BrowserRouter } from 'react-router-dom'
 import { Route, Routes } from 'react-router-dom'
@@ -17,9 +17,15 @@ function App() {
   const [user, setUser] = useState({});
   const [currentRecipe, setCurrentRecipe] = useState({});
   const [myCurrentRecipe, setMyCurrentRecipe] = useState({});
-  const [myRecipes, setMyRecipes] = useState([]);
+  // const [myRecipes, setMyRecipes] = useState([]);
   const [popupForm, setPopupForm] = useState(false);
   const [recipes, setRecipes] = useState([]);
+
+  useEffect(()=> {
+    if (user.email) {
+      setUser(user)
+    }
+  })
 
 
   return (
@@ -32,8 +38,6 @@ function App() {
         <Route path='/' element={<Main user={user}
         setCurrentRecipe={setCurrentRecipe}
         setMyCurrentRecipe={setMyCurrentRecipe}
-        myRecipes={myRecipes}
-        setMyRecipes={setMyRecipes}
         setPopupForm={setPopupForm}
         popupForm={popupForm}
         recipes={recipes}
@@ -41,23 +45,28 @@ function App() {
         />}/>
 
         <Route path='/mylist' element={<MyList
-        myRecipes={myRecipes}
-        setMyRecipes={setMyRecipes}
+        // myRecipes={myRecipes}
+        // setMyRecipes={setMyRecipes}
         user={user}
+        setUser={setUser}
         setMyCurrentRecipe={setMyCurrentRecipe}
          />}/>
 
         <Route path='/add' element={<AddRecipe
         user={user}
         setUser={setUser}
-        myRecipes={myRecipes}
-        setMyRecipes={setMyRecipes}
+        // myRecipes={myRecipes}
+        // setMyRecipes={setMyRecipes}
         setPopupForm={setPopupForm}
         popupForm={popupForm}
         />}/>
 
         <Route path='/Recipe' element={<RecipeItem currentRecipe ={currentRecipe}/>}/>
-        <Route path='/MyRecipe' element={<MyRecipePage currentRecipe ={myCurrentRecipe}/>}/>
+        <Route path='/MyRecipe' element={<MyRecipePage
+        currentRecipe ={myCurrentRecipe}
+        /* user={user}
+        setUser={setUser} */
+        />}/>
         <Route path='/logout' element={<Logout setUser={setUser}/>}/>
       </Routes>
     </BrowserRouter>

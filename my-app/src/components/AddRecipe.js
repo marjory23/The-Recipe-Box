@@ -3,9 +3,7 @@ import IngredientInput from './IngredientInput';
 import { createRecipe } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
 
-function AddRecipe({ user, setUser
-  //setPopupForm, popupForm
-}) {
+function AddRecipe({ user, setUser }) {
 
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState([{ food: '', quantity: '', measure: ''}]);
@@ -39,18 +37,14 @@ function AddRecipe({ user, setUser
       preparation: preparation,
       email: user.email,
     });
-    // console.log(user)
-    console.log(newRecipe)
-    // console.log(newRecipe)
 
     setUser(user => ({
       ...user,
       recipes: [...user.recipes, newRecipe]
     }))
-    // recipes.push(newRecipe)
-    // console.log(recipes)
+
     console.log('recipe submitted')
-    //setPopupForm(false)
+
     setTimeout(() => navigate('/mylist'), 1000)
   };
 
@@ -62,7 +56,6 @@ function AddRecipe({ user, setUser
 
   const addIngredientInput = () => {
     setIngredients(ingredients => [...ingredients, { food: '', quantity: '', measure: ''}]);
-    //console.log(ingredients)
   };
 
   const removeLastIng = () => {
