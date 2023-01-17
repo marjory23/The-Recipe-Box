@@ -6,7 +6,7 @@ function SearchRecipe({ recipes, setRecipes }) {
 
   const [search, setSearch] = useState('');
   const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(5);
+  const [end, setEnd] = useState(10);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ function SearchRecipe({ recipes, setRecipes }) {
 
 
     // FIX THIS
-    const more = async (e) => {
+   /*  const more = async (e) => {
       e.preventDefault();
       setStart((prev) => {
         return prev + 5
@@ -35,7 +35,7 @@ function SearchRecipe({ recipes, setRecipes }) {
     .then(data => {
       if (data) setRecipes(data.results)
     })
-    }
+    } */
 
   return (
     <div>
@@ -48,7 +48,7 @@ function SearchRecipe({ recipes, setRecipes }) {
       <button onClick={handleSubmit}>SEARCH</button>
       <div>
 
-      {recipes.length>0 && <button onClick={more}>more</button>}
+      {/* {recipes.length>0 && <button onClick={more}>more</button>} */}
       </div>
     </div>
 

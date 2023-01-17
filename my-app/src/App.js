@@ -18,6 +18,7 @@ function App() {
   const [myCurrentRecipe, setMyCurrentRecipe] = useState({});
   const [myRecipes, setMyRecipes] = useState([]);
   const [popupForm, setPopupForm] = useState(false);
+  const [recipes, setRecipes] = useState([]);
 
 
   return (
@@ -30,6 +31,8 @@ function App() {
         myRecipes={myRecipes} setMyRecipes={setMyRecipes}
         setPopupForm={setPopupForm}
         popupForm={popupForm}
+        recipes={recipes}
+        setRecipes={setRecipes}
         />}/>
         <Route path='/add' element={<AddRecipe user={user}
         myRecipes={myRecipes} setMyRecipes={setMyRecipes}

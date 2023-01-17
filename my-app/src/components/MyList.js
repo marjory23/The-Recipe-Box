@@ -10,7 +10,6 @@ function MyList({ myRecipes, user,
   /* const [list, setList] = useState(myRecipes)
 
   useEffect(()=> setList(myRecipes),[]) */
-
   return (
     <div>
       {/* {myRecipes.length>0 && */}

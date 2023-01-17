@@ -10,10 +10,11 @@ import Header from './Header'
 import { useNavigate } from 'react-router-dom';
 
 function Main({ user, setCurrentRecipe, setMyCurrentRecipe,
-  myRecipes, setMyRecipes, setPopupForm, popupForm
+  myRecipes, setMyRecipes, setPopupForm, popupForm,
+  recipes, setRecipes
 }) {
 
-  const [recipes, setRecipes] = useState([]);
+  // const [recipes, setRecipes] = useState([]);
   // const [myRecipes, setMyRecipes] = useState([]);
 
   // const [popupForm, setPopupForm] = useState(false);
@@ -44,7 +45,7 @@ function Main({ user, setCurrentRecipe, setMyCurrentRecipe,
     }
   }, );
 
-
+  
 
 
 

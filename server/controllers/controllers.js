@@ -43,7 +43,7 @@ exports.getRecipe = async (req, res) => {
     const user = await User.findOne({ email: req.user.email})
     console.log('USER ' + user)
     let recipes = user.recipes
-    user.recipes = recipes.filter(recipeId => recipeId.toString() !== req.params.id)
+    user.recipes = recipes.filter((recipeId) => {return recipeId.toString() !== req.params.id})
     console.log(user.recipes)
     user.save()
     res.send(result)
