@@ -7,16 +7,18 @@ function RecipeList({ recipes,setCurrentRecipe, more }) {
 
 
   return (
-    <div>
-      <div className='recipie-container'>{recipes.map(recipe => {
-        return <div key={recipe.id}>
+    <div className='outer-container'>
+
+      <div className='recipes-container'>{recipes.map(recipe => {
+        return <div className='single-recipe' key={recipe.id}>
           <Recipe
           recipe={recipe}
           setCurrentRecipe={setCurrentRecipe}
           />
         </div>
       })}</div>
-       
+
+
     </div>
   )
 }

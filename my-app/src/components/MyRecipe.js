@@ -28,15 +28,18 @@ function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe, user, 
     navigate('/MyRecipe');
   }
 
+
+
   return (
     <>
+
       <div className='item-in-list'>
-        <div onClick={openRecipe}>
-          <h6>{content.title}</h6>
+        <div className='recipe-container' onClick={openRecipe}>
+          <div className='recipe-title'>{content.title}</div>
           <img className='food-image' src={content && content.image}></img>
         </div>
+          <div className='key round' onClick={deleteThis}>-</div>
 
-        <button className='button' onClick={deleteThis}>delete</button>
 
       </div>
     </>

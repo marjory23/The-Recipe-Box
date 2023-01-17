@@ -11,26 +11,39 @@ function MyRecipePage({ currentRecipe }) {
     navigate(-1);
   }
 
+  const logout = () =>{
+    navigate('/logout');
+  }
+
   return (
     <>
       <Header></Header>
+      <div className='logout-icon' onClick={logout}>
+         <img src='../logout1Traced.png' />
+      </div>
+
+      <div className='button-container'>
+        <div className='key' onClick={goBack}>«</div>
+        <div className='item-page-title'>{content.title}</div>
+      </div>
+
       <div className='recipe-box'>
 
         <div className='item-page'>
+
           <div className='left-img'>
             <img className='food-image-in-item' src={content && content.image}></img>
           </div>
+
           <div className='right-container'>
-
-            <h2>{content.title}</h2>
-            {content.duration!=null &&<h6>cooking time: {content.duration}</h6>}
+            {content.duration!=null &&<div className='cooking-time'>cooking time: {content.duration}</div>}
             {<div>{content.ingredients.map((item, i)=> <p className='ingredients' key={content._id + i}>{`${item.quantity} ${item.measure} ${item.food}`}</p>)}</div>}
+            <div className='instructions-container'><p>{content.preparation}</p></div>
           </div>
-        </div>
-        <div className='instructions-container'><p>{content.preparation}</p></div>
 
-        <button className='button' onClick={goBack}>back</button>
         </div>
+
+      </div>
     </>
 
 

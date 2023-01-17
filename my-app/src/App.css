@@ -1,11 +1,17 @@
-.Main {
-  text-align: center;
-  padding: 100px;
+:root {
+  --primary: #ed563c;
+  --secondary: #d18f67;
+  --light: #EEE;
+  --light-alt: #61759b;
+  --dark: #131A26;
+  --dark-alt: #202B3E;
 }
 
-.header, .create{
+.create-box {
   text-align: center;
   padding: 50px;
+  position: relative;
+  top: 150px;
 }
 
 .input-box {
@@ -24,23 +30,63 @@ input {
   height: 15px;
   margin: 5px;
   border-radius: 5px;
-  border: 0.5px;
+  border: 1px;
 }
 
 .add-or-remove-last {
   display: flex;
 }
 
-.recipie-container {
+.outer-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.recipes-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   margin-bottom: 20px;
+  position: relative;
+  top: 200px;
+  width: 1200px;
+  height: 400px;
+  overflow: scroll;
+}
+
+.single-recipe {
+  word-break: break-all;
+}
+
+
+.recipe-container {
+  height: 50px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.item-in-list :hover {
+  scale: 1.1;
+}
+
+.recipe-title {
+  position: absolute;
+  top: 170px;
+  font-size: 14px;
+  font-weight: 700;
+  font-style: italic;
+
 }
 
 
 .recipe-page {
   height: 100vh;
-  width: 100wh;
+  width: 100vW;
 }
 
 .recipe-box {
@@ -48,10 +94,10 @@ input {
   height: 100%;
   position: absolute;
   padding: 50px 200px;
-  top: 200px;
+  top: 300px;
   left: 0px;
   /* background: linear-gradient(to right, #e4aa08, #f0e6d3); */
-  background-color: #e4aa08;
+
 }
 
 .item-page {
@@ -65,32 +111,7 @@ input {
   position: relative;
 }
 
-.food-image-in-item {
-  width: 100%;
-  height: 100%;
-}
 
-.ingredients {
-  font-size: 12px;
-  font-style: italic;
-  color: grey;
-}
-
-.instructions-container {
-  font-size: 18px;
-  text-align: left;
-  padding-top: 50px;
-
-}
-
-.recipe-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.right-container {
-  padding-left: 50px;
-}
 
 .button {
   width: 50px;
@@ -104,8 +125,10 @@ input {
   align-items: center;
 }
 
-.list-title {
-  text-align: left;
+
+.log-container{
+  position: relative;
+  top: 300px;
 }
 
 .form {
@@ -114,6 +137,7 @@ input {
   flex-direction: column;
   flex-wrap: wrap;
   margin: auto;
+
 
 }
 
@@ -125,4 +149,136 @@ input {
   background: #8fafad;
   color: #fafafa;
   font-size: 1rem;
+}
+
+.hello {
+  /* font-style: italic; */
+  position: relative;
+  font-size: 25px;
+  font-weight: bold;
+  top: 130px;
+
+}
+
+
+
+.logout-icon {
+  width: 100px;
+  height: 100px;
+  /* position: fixed; */
+  position: absolute;
+  top: 50px;
+  right: 20px;
+
+}
+
+.header {
+  top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-container {
+  position: relative;
+  top: 50px;
+  /* position: fixed; */
+  width: 100%;
+}
+
+.search {
+  position: relative;
+  top: 200px;
+}
+
+.logo {
+  scale: 1.2;
+}
+
+.button-container {
+  position: relative;
+  top: 150px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.key {
+
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.add-recipe {
+  /* position: fixed;
+  bottom: 32px;
+  right: 32px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 35px;
+  height: 35px;
+  border-radius: 999px;
+
+
+  /* background-image: linear-gradient(to bottom right, var(--primary), var(--secondary)); */
+}
+
+.text-area {
+  height: 150px;
+  width: 300px;
+  border-radius: 5px;
+}
+.create {
+  margin: 10px;
+}
+
+.round {
+  position: relative;
+  top: 150px;
+
+  background-color: black;
+  color: #e4aa08;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  z-index: 5;
+}
+
+.item-page-title {
+  margin: 20px;
+}
+
+.food-image-in-item {
+  width: 400px;
+  border-radius: 10px;
+}
+
+.right-container {
+  padding-left: 50px;
+  text-align: left;
+  width: 600px;
+}
+
+.ingredients {
+  font-size: 14px;
+  font-style: italic;
+
+}
+
+.instructions-container {
+  font-size: 16px;
+  text-align: left;
+  padding-top: 20px;
+}
+
+.cooking-time {
+  font-size: 14px;
+  font-weight: bold;
 }

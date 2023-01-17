@@ -6,7 +6,7 @@ function SearchRecipe({ recipes, setRecipes }) {
 
   const [search, setSearch] = useState('');
   const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(6);
+  const [end, setEnd] = useState(12);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,14 +38,14 @@ function SearchRecipe({ recipes, setRecipes }) {
     } */
 
   return (
-    <div>
+    <div className='search'>
       <input
       type='text'
-      placeholder='search'
+      placeholder='ingredients...'
       value={search}
       onChange={(e) => setSearch(e.target.value)}
       ></input>
-      <button onClick={handleSubmit}>SEARCH</button>
+      <button onClick={handleSubmit}>Search</button>
       <div>
 
       {/* {recipes.length>0 && <button onClick={more}>more</button>} */}

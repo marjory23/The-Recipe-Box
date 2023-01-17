@@ -22,16 +22,31 @@ function MyList({ user, setUser, setMyCurrentRecipe }) {
     navigate('/');
   }
 
+  const logout = () =>{
+    navigate('/logout');
+  }
+  const back = '«'
+
   return (
     <div>
 
       <Header></Header>
-      <div className='hello'>hello {user.firstName}</div>
-      {/* {myRecipes.length>0 && */}
-      <div className='list-title'><h2>My Recipes List</h2></div>
-      {/* } */}
-      <div className='recipie-container'>{myRecipes.map((item) => {
-        return <div key={item._id}>
+      <div className='hello'>Hello {user.firstName}!</div>
+      <div className='logout-icon' onClick={logout}>
+         <img src='../logout1Traced.png' />
+      </div>
+
+      <div className='button-container'>
+        <div>My Recipes List</div>
+        <div className='add-recipe' onClick={addRecipe}>+</div>
+        <div onClick={backToSearch}>{back}</div>
+      </div>
+
+
+      <div className='outer-container'>
+
+      <div className='recipes-container'>{myRecipes.map((item) => {
+        return <div className='single-recipe' key={item._id}>
           <MyRecipe
           content={item}
           setMyRecipes={setMyRecipes}
@@ -42,9 +57,9 @@ function MyList({ user, setUser, setMyCurrentRecipe }) {
           />
       </div>
       })}</div>
+      </div>
 
-      <button onClick={addRecipe}>Add your recipe</button>
-      <button onClick={backToSearch}>back to search</button>
+
 
     </div>
   )

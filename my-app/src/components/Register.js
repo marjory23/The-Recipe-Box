@@ -49,10 +49,14 @@ const Register = ({ setUser }) => {
     );
   };
 
+  const goToLogin = () => {
+    navigate('/login')
+  }
+
   return (
     <>
       <Header></Header>
-      <section>
+      <section className='log-container'>
         <h2>Register</h2>
         <form className="form" onSubmit={handleSubmit}>
           <input
@@ -87,6 +91,8 @@ const Register = ({ setUser }) => {
             &nbsp;Register&nbsp;
           </button>
         </form>
+        <div>Already registered?</div>
+        <button className="form-submit" onClick={goToLogin}>Sign in</button>
       </section>
     </>
   );

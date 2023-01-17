@@ -28,27 +28,37 @@ function Main({ user, setCurrentRecipe, recipes, setRecipes
   }
 
   return (
-    <div className='Main'>
-
+    <div>
 
       <Header></Header>
-      <div className='hello'>hello {user.firstName}</div>
-      <button onClick={logout}>logout</button>
+
+      <div className='hello'>Hello {user.firstName}!</div>
+      <div className='logout-icon' onClick={logout}>
+         <img src='../logout1Traced.png' />
+      </div>
+
+      <div className='button-container'>
+
+        {/* <button onClick={addRecipe}>Add your recipe</button> */}
+
+        <div  onClick={goToMyRecipesList}>Go to my  List</div>
+        <div className='add-recipe' onClick={addRecipe}>+</div>
+
+      </div>
+      {/* <button onClick={logout}>logout</button> */}
 
       <SearchRecipe
       recipes={recipes}
       setRecipes={setRecipes}
       />
 
-      {recipes.length>0 && <RecipeList
-      recipes={recipes}
-      setCurrentRecipe={setCurrentRecipe}
-      />
-      }
+      <div>
+        {recipes.length>0 && <RecipeList
+        recipes={recipes}
+        setCurrentRecipe={setCurrentRecipe}
+        /> }
+      </div>
 
-      <button onClick={addRecipe}>Add your recipe</button>
-
-      <button onClick={goToMyRecipesList}>My Recipes List</button>
 
     </div>
   )

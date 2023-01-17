@@ -50,8 +50,8 @@ const Login = ({ setUser }) => {
   return (
     <>
       <Header></Header>
-      <div></div>
-      <section>
+
+      <section className='log-container'>
         <h2>Login</h2>
         <form className="form" onSubmit={handleSubmit}>
           <input

@@ -65,9 +65,11 @@ function AddRecipe({ user, setUser }) {
   return (
     <>
       <Header></Header>
-      <div className='hello'>hello {user.firstName}</div>
-      <div className='create'>
-        <button className='button' onClick={goBack}>back</button>
+      <div className='hello'>Hello {user.firstName}!</div>
+
+      <div className='create-box'>
+        <div className='key' onClick={goBack}>«</div>
+        {/* <button className='button' onClick={goBack}>back</button> */}
         <form onSubmit={(e) => handleSubmit(e)}>
             <div className='input-box'>
 
@@ -92,8 +94,8 @@ function AddRecipe({ user, setUser }) {
               })}</div>
 
               <div className='add-or-remove-last'>
-                {ingredients.length>1 && <button onClick={removeLastIng}>-</button>}
-                <button onClick={addIngredientInput}>+</button>
+                {ingredients.length>1 && <div className='key' onClick={removeLastIng}>-</div>}
+                <div className='key' onClick={addIngredientInput}>+</div>
               </div>
 
               <input
@@ -114,7 +116,7 @@ function AddRecipe({ user, setUser }) {
               onChange={(e) => setDuration(e.target.value)}>
               </input>
 
-              <textarea
+              <textarea className='text-area'
               required
               type='text'
               value={preparation}
@@ -124,7 +126,7 @@ function AddRecipe({ user, setUser }) {
               </textarea>
 
             </div>
-            <button className='button' type="submit" disabled={disabled}>Create</button>
+            <button className='key create' type="submit" disabled={disabled}>Create</button>
           </form>
       </div>
     </>

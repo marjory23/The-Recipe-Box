@@ -22,7 +22,7 @@ import Header from './Header';
   return (
     <>
       <Header></Header>
-      <div>
+      <div className='log-container'>
         <h2>Are you sure you want to log out?</h2>
 
         <button onClick={goBack}>No</button>
