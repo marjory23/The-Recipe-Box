@@ -38,8 +38,8 @@ function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe, user, 
           <div className='recipe-title'>{content.title}</div>
           <img className='food-image' src={content && content.image}></img>
         </div>
-          <div className='key round' onClick={deleteThis}>-</div>
 
+          <div className='key round' onClick={deleteThis}>-</div>
 
       </div>
     </>

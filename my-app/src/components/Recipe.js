@@ -26,7 +26,7 @@ function Recipe({ recipe, setCurrentRecipe}) {
   <div className='item-in-list'>
     <div className='recipe-container' onClick={openRecipe}>
       <div className='recipe-title'>{recipe.name}</div>
-      <img className='food-image' src={recipe.thumbnail_url}></img>
+      <div className='div-img'><img className='food-image' src={recipe.thumbnail_url}></img></div>
     </div>
       {/* <div className='key round' onClick={deleteThis}>-</div> */}
 

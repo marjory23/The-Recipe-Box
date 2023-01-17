@@ -6,7 +6,7 @@ function SearchRecipe({ recipes, setRecipes }) {
 
   const [search, setSearch] = useState('');
   const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(12);
+  const [end, setEnd] = useState(8);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

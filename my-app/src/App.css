@@ -41,7 +41,6 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .recipes-container {
@@ -56,31 +55,27 @@ input {
   overflow: scroll;
 }
 
-.single-recipe {
-  word-break: break-all;
-}
-
-
 .recipe-container {
   height: 50px;
   margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  border-radius: 5px;
 }
 
 .item-in-list :hover {
   scale: 1.1;
+  transform: translateY(1.5px);
 }
 
 .recipe-title {
   position: absolute;
   top: 170px;
+  max-width: 140px;
   font-size: 14px;
   font-weight: 700;
   font-style: italic;
-
 }
 
 
@@ -96,8 +91,6 @@ input {
   padding: 50px 200px;
   top: 300px;
   left: 0px;
-  /* background: linear-gradient(to right, #e4aa08, #f0e6d3); */
-
 }
 
 .item-page {
@@ -111,8 +104,6 @@ input {
   position: relative;
 }
 
-
-
 .button {
   width: 50px;
   margin-top: 10px;
@@ -123,8 +114,8 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
-
 
 .log-container{
   position: relative;
@@ -137,8 +128,6 @@ input {
   flex-direction: column;
   flex-wrap: wrap;
   margin: auto;
-
-
 }
 
 .form-submit {
@@ -157,10 +146,7 @@ input {
   font-size: 25px;
   font-weight: bold;
   top: 130px;
-
 }
-
-
 
 .logout-icon {
   width: 100px;
@@ -169,7 +155,6 @@ input {
   position: absolute;
   top: 50px;
   right: 20px;
-
 }
 
 .header {
@@ -207,27 +192,24 @@ input {
 }
 
 .key {
-
   flex-direction: column;
   font-size: 20px;
   font-weight: 800;
   font-style: italic;
 }
 
+.func :hoover {
+  scale: 1.5;
+  color: grey;
+}
+
 .add-recipe {
-  /* position: fixed;
-  bottom: 32px;
-  right: 32px; */
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 35px;
   height: 35px;
   border-radius: 999px;
-
-
-  /* background-image: linear-gradient(to bottom right, var(--primary), var(--secondary)); */
 }
 
 .text-area {
@@ -241,8 +223,7 @@ input {
 
 .round {
   position: relative;
-  top: 150px;
-
+  top: 170px;
   background-color: black;
   color: #e4aa08;
   width: 20px;
@@ -269,7 +250,6 @@ input {
 .ingredients {
   font-size: 14px;
   font-style: italic;
-
 }
 
 .instructions-container {
@@ -281,4 +261,20 @@ input {
 .cooking-time {
   font-size: 14px;
   font-weight: bold;
+}
+
+.div-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+
+}
+
+.food-image {
+  max-width: 150px;
+  min-width: 150px;
+  max-height: 150px;
+  min-height: 150px;
+  border-radius: 5px;
+  object-fit: cover;
 }
