@@ -219,6 +219,8 @@ input {
 }
 .create {
   margin: 10px;
+  border-radius: 5px;
+  border: 1px;
 }
 
 .round {
