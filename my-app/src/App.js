@@ -17,7 +17,6 @@ function App() {
   const [user, setUser] = useState({});
   const [currentRecipe, setCurrentRecipe] = useState({});
   const [myCurrentRecipe, setMyCurrentRecipe] = useState({});
-  // const [myRecipes, setMyRecipes] = useState([]);
   const [popupForm, setPopupForm] = useState(false);
   const [recipes, setRecipes] = useState([]);
 
@@ -45,8 +44,6 @@ function App() {
         />}/>
 
         <Route path='/mylist' element={<MyList
-        // myRecipes={myRecipes}
-        // setMyRecipes={setMyRecipes}
         user={user}
         setUser={setUser}
         setMyCurrentRecipe={setMyCurrentRecipe}
@@ -55,8 +52,6 @@ function App() {
         <Route path='/add' element={<AddRecipe
         user={user}
         setUser={setUser}
-        // myRecipes={myRecipes}
-        // setMyRecipes={setMyRecipes}
         setPopupForm={setPopupForm}
         popupForm={popupForm}
         />}/>
@@ -64,8 +59,6 @@ function App() {
         <Route path='/Recipe' element={<RecipeItem currentRecipe ={currentRecipe}/>}/>
         <Route path='/MyRecipe' element={<MyRecipePage
         currentRecipe ={myCurrentRecipe}
-        /* user={user}
-        setUser={setUser} */
         />}/>
         <Route path='/logout' element={<Logout setUser={setUser}/>}/>
       </Routes>

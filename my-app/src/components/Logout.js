@@ -1,5 +1,4 @@
 import React from 'react';
-//import auth from '../utils/auth';
 import { logout } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
@@ -25,9 +24,20 @@ import Header from './Header';
       <div className='log-container'>
         <h2>Are you sure you want to log out?</h2>
 
-        <button onClick={goBack}>No</button>
 
-        <button onClick={() => handleClick()}>Yes</button>
+        <div className='yes-no'>
+
+          <div onClick={goBack}>
+            <img className='no' src='../no.png' />
+          </div>
+
+          <div onClick={() => handleClick()}>
+            <img src='../yes.png' />
+          </div>
+
+        </div>
+
+
       </div>
     </>
   );

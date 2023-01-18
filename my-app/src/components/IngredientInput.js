@@ -2,8 +2,6 @@ import React from 'react'
 
 function IngredientInput({ i, ingredients, handleIngredientChange }) {
 
-  //console.log(ingredients);
-
   return (
     <div>
       <input

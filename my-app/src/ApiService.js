@@ -1,5 +1,6 @@
 const BASE_URL = 'http://localhost:3000';
 
+
 export const register = async (user) => {
   try {
     const res = await fetch(BASE_URL + '/register', {
@@ -113,7 +114,6 @@ export const fetchMyRecipes = async () => {
   try {
     const result = await fetch('http://localhost:3000/recipes')
     const data = await result.json();
-    //console.log(data)
     return data;
 
   } catch (error) {

@@ -17,7 +17,6 @@ function AddRecipe({ user, setUser }) {
     navigate(-1);
   }
 
-  // useEffect(() => console.log(myRecipes), [myRecipes])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,7 +68,6 @@ function AddRecipe({ user, setUser }) {
 
       <div className='create-box'>
         <div className='key' onClick={goBack}>«</div>
-        {/* <button className='button' onClick={goBack}>back</button> */}
         <form onSubmit={(e) => handleSubmit(e)}>
             <div className='input-box'>
 

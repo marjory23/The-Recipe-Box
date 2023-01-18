@@ -39,13 +39,11 @@ function Main({ user, setCurrentRecipe, recipes, setRecipes
 
       <div className='button-container'>
 
-        {/* <button onClick={addRecipe}>Add your recipe</button> */}
 
         <div  onClick={goToMyRecipesList}>Go to my  List</div>
         <div className='add-recipe' onClick={addRecipe}>+</div>
 
       </div>
-      {/* <button onClick={logout}>logout</button> */}
 
       <SearchRecipe
       recipes={recipes}

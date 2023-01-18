@@ -1,7 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import { deleteRecipe } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
-import Header from './Header';
 
 function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe, user, setUser }) {
 

@@ -22,20 +22,6 @@ function SearchRecipe({ recipes, setRecipes }) {
     }
 
 
-    // FIX THIS
-   /*  const more = async (e) => {
-      e.preventDefault();
-      setStart((prev) => {
-        return prev + 5
-      });
-      setEnd((prev) => {
-        return prev + 5
-      });
-      await fetchRecipes(search, start, end)
-    .then(data => {
-      if (data) setRecipes(data.results)
-    })
-    } */
 
   return (
     <div className='search'>
@@ -45,11 +31,7 @@ function SearchRecipe({ recipes, setRecipes }) {
       value={search}
       onChange={(e) => setSearch(e.target.value)}
       ></input>
-      <button onClick={handleSubmit}>Search</button>
-      <div>
-
-      {/* {recipes.length>0 && <button onClick={more}>more</button>} */}
-      </div>
+      <button className='key create' onClick={handleSubmit}>Search</button>
     </div>
 
   )
