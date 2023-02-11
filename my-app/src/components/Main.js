@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import SearchRecipe from './SearchRecipe';
 import RecipeList from './RecipeList';
 import Header from './Header'
 import { useNavigate } from 'react-router-dom';
 
-function Main({ user, setCurrentRecipe, recipes, setRecipes
-}) {
+function Main({ user, setCurrentRecipe, recipes, setRecipes }) {
 
   let navigate = useNavigate()
 
@@ -38,7 +37,6 @@ function Main({ user, setCurrentRecipe, recipes, setRecipes
       </div>
 
       <div className='button-container'>
-
 
         <div  onClick={goToMyRecipesList}>Go to my  List</div>
         <div className='add-recipe' onClick={addRecipe}>+</div>

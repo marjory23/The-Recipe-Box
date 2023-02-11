@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import RecipeItem from './RecipeItem';
-import { useNavigate, Navigate, Link } from 'react-router-dom';
+import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function Recipe({ recipe, setCurrentRecipe}) {
 
@@ -12,8 +11,6 @@ function Recipe({ recipe, setCurrentRecipe}) {
   }
 
   return (
-
-
       <>
 
         <div className='item-in-list'>
@@ -21,7 +18,7 @@ function Recipe({ recipe, setCurrentRecipe}) {
             <div className='recipe-title'>{recipe.name}</div>
             <div className='div-img'><img className='food-image' src={recipe.thumbnail_url}></img></div>
           </div>
-     
+
         </div>
       </>
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import auth from '../utils/auth';
 import { register } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';

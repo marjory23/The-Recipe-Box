@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Recipe from './Recipe'
 
 
 
-function RecipeList({ recipes,setCurrentRecipe, more }) {
+function RecipeList({ recipes,setCurrentRecipe }) {
 
 
   return (
