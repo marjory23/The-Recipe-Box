@@ -5,8 +5,8 @@ The-Recipe-Box is a recipe finder tool. Users can register and sign in. Using th
 ## Screenshots
 
 <p align="center">
-  <img src="images/img01" />
-  <img src="images/img02" />
+  <img src="images/img01.png" />
+  <img src="images/img02.png" />
 </p>
 
 
