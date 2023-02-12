@@ -22,7 +22,7 @@ import Header from './Header';
     <>
       <Header></Header>
       <div className='log-container'>
-        <h2>Are you sure you want to log out?</h2>
+        <h2 className='logout'>Are you sure you want to log out?</h2>
 
 
         <div className='yes-no'>

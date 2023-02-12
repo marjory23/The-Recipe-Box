@@ -1,10 +1,8 @@
-:root {
-  --primary: #ed563c;
-  --secondary: #d18f67;
-  --light: #EEE;
-  --light-alt: #61759b;
-  --dark: #131A26;
-  --dark-alt: #202B3E;
+body {
+  box-sizing: border-box;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .create-box {
@@ -126,6 +124,9 @@ input {
 
 .log-container{
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   top: 300px;
 }
 
@@ -133,7 +134,7 @@ input {
   max-width: 40vw;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  align-items: center;
   margin: auto;
 }
 
@@ -297,4 +298,54 @@ input {
 
 .no {
   scale: 0.9;
+}
+
+
+@media only screen and (max-width: 844px) {
+
+  .header {
+    scale: 0.75;
+  }
+
+  .log-container{
+    top: 200px;
+  }
+
+  .logout-icon {
+    top: 590px;
+    right: 0px;
+    scale: 0.6;
+  }
+
+  .hello {
+    top: 110px;
+  }
+
+  .button-container {
+    top: 130px;
+  }
+
+  .search {
+    top: 150px;
+  }
+
+  .create-box {
+    top: 100px;
+  }
+
+  .recipe-title {
+    font-size: 12px;
+  }
+
+  .recipes-container {
+    width: 345px;
+  }
+
+  .round {
+    top:130px;
+  }
+
+  .logout {
+    scale: 0.8;
+  }
 }
