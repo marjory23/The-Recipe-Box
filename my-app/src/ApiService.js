@@ -1,4 +1,5 @@
 const BASE_URL = 'http://localhost:3000';
+const API_KEY = process.env.REACT_APP_API_KEY
 
 
 export const register = async (user) => {
@@ -69,7 +70,7 @@ export const fetchRecipes = async (search, start, end) => {
     const result = await fetch(`https://tasty.p.rapidapi.com/recipes/list?from=${start}&size=${end}&q=${search}`, {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': '6f9a8a663amsh8a4d83fb438ce8bp17a448jsnf930468c0744',
+        'X-RapidAPI-Key': API_KEY,
         'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
       }
     })
