@@ -3,6 +3,9 @@ import IngredientInput from './IngredientInput';
 import { createRecipe } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
+import ImgUploader from './ImgUploader';
+
+
 function AddRecipe({ user, setUser }) {
 
   const [title, setTitle] = useState('');
@@ -11,6 +14,7 @@ function AddRecipe({ user, setUser }) {
   const [duration, setDuration] = useState('');
   const [preparation, setPreparation] = useState('');
   const [disabled, setDisabled] = useState(false);
+  const [popupImgUploader, setPopupImgUploader] = useState(false)
 
   const navigate = useNavigate()
   const goBack = () => {
@@ -23,7 +27,6 @@ function AddRecipe({ user, setUser }) {
     setDisabled(true);
 
     setTitle(e.target.value);
-    setImage(e.target.value);
     setIngredients(ingredients)
     setDuration(e.target.value);
     setPreparation(e.target.value)
@@ -68,7 +71,7 @@ function AddRecipe({ user, setUser }) {
 
       <div className='create-box'>
         <div className='key' onClick={goBack}>«</div>
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onSubmit={(e) => handleSubmit(e)} >
             <div className='input-box'>
 
               <input
@@ -96,14 +99,19 @@ function AddRecipe({ user, setUser }) {
                 <div className='key' onClick={addIngredientInput}>+</div>
               </div>
 
-              <input
+              {/* <input
               required
               type='text'
               value={image}
               name='image'
               placeholder='image'
               onChange={(e) => setImage(e.target.value)}>
-              </input>
+              </input> */}
+
+
+              <button onClick={() => setPopupImgUploader(true)}>
+                      add photo
+                    </button>
 
               <input
               required
@@ -126,6 +134,12 @@ function AddRecipe({ user, setUser }) {
             </div>
             <button className='key create' type="submit" disabled={disabled}>Create</button>
           </form>
+          {popupImgUploader && <ImgUploader
+              setPopupImgUploader={setPopupImgUploader}
+              image={image}
+              setImage={setImage}
+
+              />}
       </div>
     </>
   )
