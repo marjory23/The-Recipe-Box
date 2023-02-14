@@ -1,6 +1,7 @@
 'use strict'
 
-const mongoose = require('./db')
+const mongoose = require('./db');
+
 
 const { Schema } = mongoose;
 

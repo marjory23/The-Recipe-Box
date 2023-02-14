@@ -1,7 +1,8 @@
 'use strict'
 
-const Recipe = require('../models/schema');
-const User = require('../models/userSchema')
+const Recipe = require('../models/recipeSchema');
+const User = require('../models/userSchema');
+const cloudinary = require('../cloudinary.config')
 
 exports.getRecipe = async (req, res) => {
   try {
@@ -16,15 +17,14 @@ exports.getRecipe = async (req, res) => {
 
  exports.postRecipe = async (req, res) => {
   try {
-    console.log('posting recipe')
+    console.log(req.body.image)
 
+    const img = await cloudinary.uploader.upload(req.body.image);
+    console.log(img)
     const data = req.body;
     const user = await User.findOne({ email: req.body.email})
-    // console.log(user)
-    // console.log(user.email)
     const result = await Recipe.create(data)
     let userRecipes = user.recipes;
-    // console.log(userRecipes)
     userRecipes.push(result);
     user.recipes = userRecipes
     user.save()
@@ -35,7 +35,7 @@ exports.getRecipe = async (req, res) => {
     console.log('Error ' + err);
     res.status(500);
   }
- }
+ };
 
  exports.deleteRecipe = async (req, res) => {
   try {
@@ -53,4 +53,5 @@ exports.getRecipe = async (req, res) => {
     res.status(500);
     res.send();
   }
- }
+ };
+
