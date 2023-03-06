@@ -14,7 +14,8 @@ app.use(cors({
   credentials: true,
 }));
 
-app.use(Express.json());
+app.use(Express.json({limit: "100mb"
+}));
 
 app.use(session({
   name: 'sid',
