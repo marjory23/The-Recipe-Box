@@ -18,7 +18,7 @@ app.use(Express.json());
 app.use(session({
   name: 'sid',
   secret: 'my secret',
-  // resave: false,
+  resave: false,
 
   saveUninitialized: true,
   cookie: {

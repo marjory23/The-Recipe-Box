@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
+import './Page.css'
 
 function MyRecipePage({ currentRecipe }) {
 
@@ -37,7 +38,9 @@ function MyRecipePage({ currentRecipe }) {
 
           <div className='right-container'>
             {content.duration!=null &&<div className='cooking-time'>cooking time: {content.duration}</div>}
-            {<div>{content.ingredients.map((item, i)=> <p className='ingredients' key={content._id + i}>{`${item.quantity} ${item.measure} ${item.food}`}</p>)}</div>}
+            <div className='all-ingredients'>
+              {content.ingredients.map((item, i)=> <p className='ingredients' key={content._id + i}>{`${item.quantity} ${item.measure} ${item.food}`}</p>)}
+            </div>
             <div className='instructions-container'><p>{content.preparation}</p></div>
           </div>
 

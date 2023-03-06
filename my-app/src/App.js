@@ -5,11 +5,11 @@ import { Route, Routes } from 'react-router-dom'
 import Register from './components/Register';
 import Login from './components/Login'
 import Main from './components/Main';
-import RecipeItem from './components/RecipeItem';
+import RecipePage from './components/RecipePage';
 import MyRecipePage from './components/MyRecipePage';
 import AddRecipe from './components/AddRecipe';
 import Logout from './components/Logout';
-import MyList from './components/MyList';
+import MyRecipeList from './components/MyRecipeList';
 
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
         setRecipes={setRecipes}
         />}/>
 
-        <Route path='/mylist' element={<MyList
+        <Route path='/mylist' element={<MyRecipeList
         user={user}
         setUser={setUser}
         setMyCurrentRecipe={setMyCurrentRecipe}
@@ -56,7 +56,7 @@ function App() {
         popupForm={popupForm}
         />}/>
 
-        <Route path='/Recipe' element={<RecipeItem currentRecipe ={currentRecipe}/>}/>
+        <Route path='/Recipe' element={<RecipePage currentRecipe ={currentRecipe}/>}/>
         <Route path='/MyRecipe' element={<MyRecipePage
         currentRecipe ={myCurrentRecipe}
         />}/>
