@@ -34,7 +34,7 @@ function ImgUploader({ setPopupImgUploader, setImage, image }) {
     <div className="uploader">
       <button onClick={()=> setPopupImgUploader(false)}>X</button>
       <br></br>
-      <form onSubmit={handleSubmitFile}>
+      <form className="form-uploader" onSubmit={handleSubmitFile}>
         <input
           type="file"
           name="image"
@@ -47,7 +47,7 @@ function ImgUploader({ setPopupImgUploader, setImage, image }) {
         </button>
       </form>
       {previewSource && (
-        <img src={previewSource} alt="chosen" style={{ height: "200px" } } />
+        <img className='preview' src={previewSource} alt="chosen" />
       )}
     </div>
   )

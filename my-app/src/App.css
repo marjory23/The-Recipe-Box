@@ -8,41 +8,12 @@ body {
   align-items: center;
 }
 
-.create-box {
-  text-align: center;
-  padding: 50px;
-  position: relative;
-  top: 150px;
-}
-
-.input-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.input-line {
-  display: flex;
-  align-items: center;
-}
-
 input {
   height: 15px;
   margin: 5px;
   border-radius: 5px;
   border: 1px;
 }
-
-.add-or-remove-last {
-  display: flex;
-}
-
-.recipe-page {
-  height: 100vh;
-  width: 100vW;
-}
-
 
 .button {
   width: 50px;
@@ -104,7 +75,6 @@ input {
   font-style: italic;
 }
 
-
 .add-recipe {
   display: flex;
   align-items: center;
@@ -112,17 +82,6 @@ input {
   width: 35px;
   height: 35px;
   border-radius: 999px;
-}
-
-.text-area {
-  height: 150px;
-  width: 300px;
-  border-radius: 5px;
-}
-.create {
-  margin: 10px;
-  border-radius: 5px;
-  border: 1px;
 }
 
 .round {
@@ -158,10 +117,6 @@ input {
 
   .search {
     top: 150px;
-  }
-
-  .create-box {
-    top: 100px;
   }
 
   .round {
