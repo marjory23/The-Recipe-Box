@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
+import './Page.css'
 
-function RecipeItem({  currentRecipe }) {
+function RecipePage({  currentRecipe }) {
   console.log(currentRecipe);
   const recipe = currentRecipe;
 
@@ -37,7 +38,9 @@ function RecipeItem({  currentRecipe }) {
 
           <div className='right-container'>
             {recipe.cook_time_minutes!=null &&<h6> cooking time: {recipe.cook_time_minutes}</h6>}
-            <div>{recipe.sections[0].components && recipe.sections[0].components.map((item, i)=> <p className='ingredients' key={recipe.id + i}>{item.raw_text}</p>)}</div>
+            <div className='all-ingredients'>
+              {recipe.sections[0].components && recipe.sections[0].components.map((item, i)=> <p className='ingredients' key={recipe.id + i}>{item.raw_text}</p>)}
+              </div>
         <div className='instructions-container'>{recipe.instructions.map((item, i)=> <p key={recipe.id + i}>{item.display_text}</p>)}</div>
           </div>
         </div>
@@ -47,4 +50,4 @@ function RecipeItem({  currentRecipe }) {
   )
 }
 
-export default RecipeItem
+export default RecipePage

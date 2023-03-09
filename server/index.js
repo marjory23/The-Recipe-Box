@@ -13,12 +13,14 @@ app.use(cors({
   methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD","DELETE"],
   credentials: true,
 }));
-app.use(Express.json());
+
+app.use(Express.json({limit: "100mb"
+}));
 
 app.use(session({
   name: 'sid',
   secret: 'my secret',
-  // resave: false,
+  resave: false,
 
   saveUninitialized: true,
   cookie: {

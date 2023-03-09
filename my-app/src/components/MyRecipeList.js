@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import MyRecipe from './MyRecipe';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
+import './List.css'
 
-function MyList({ user, setUser, setMyCurrentRecipe }) {
+function MyRecipeList({ user, setUser, setMyCurrentRecipe }) {
   const [myRecipes, setMyRecipes] = useState(user.recipes);
 
   let navigate = useNavigate()
@@ -65,4 +66,4 @@ function MyList({ user, setUser, setMyCurrentRecipe }) {
   )
 }
 
-export default MyList
+export default MyRecipeList
