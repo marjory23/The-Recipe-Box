@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './App.css';
+// import './App.css';
 import { BrowserRouter } from 'react-router-dom'
 import { Route, Routes } from 'react-router-dom'
 import Register from './components/Register';
