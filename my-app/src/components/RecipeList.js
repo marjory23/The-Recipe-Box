@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Recipe from './Recipe';
 // import './List.css';
 import ImageList from '@mui/material/ImageList';
@@ -10,6 +10,7 @@ import Box from '@mui/material/Box';
 
 
 function RecipeList({ recipes,setCurrentRecipe }) {
+ 
 
 
   return (

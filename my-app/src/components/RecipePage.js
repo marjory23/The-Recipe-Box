@@ -18,6 +18,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
@@ -38,14 +39,14 @@ function RecipePage({  currentRecipe }) {
   return (
     <>
       <Header></Header>
-       <div className='logout-icon' onClick={logout}>
+       {/* <div className='logout-icon' onClick={logout}>
           <img src='../logout1Traced.png' />
        </div>
 
        <div className='button-container'>
          <div className='key' onClick={goBack}>«</div>
-       </div>
-      <Card sx={{ maxWidth: 600 }}>
+       </div> */}
+      <Card sx={{ maxWidth: 800, minWidth: 150 }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -55,11 +56,16 @@ function RecipePage({  currentRecipe }) {
           }
           action={
             <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
+            <CloseIcon onClick={goBack}/>
           </IconButton>
           }
+          // action={
+          //   <IconButton aria-label="add to favorites">
+          //   <FavoriteIcon />
+          // </IconButton>
+          // }
           title={`${recipe.name}`}
-          subheader={`${recipe.cook_time_minutes}`}
+          subheader={`${recipe.cook_time_minutes > 0 ? recipe.cook_time_minutes : ''}`}
           // subheader={`${recipe.cook_time_minutes!=null &&<h6> cooking time: {recipe.cook_time_minutes}</h6>}`}
 
         />

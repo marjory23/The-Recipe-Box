@@ -3,6 +3,7 @@ import IngredientInput from './IngredientInput';
 import { createRecipe } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
+import Main from './Main';
 import ImgUploader from './ImgUploader';
 import './Create.css'
 
@@ -67,7 +68,9 @@ function AddRecipe({ user, setUser }) {
 
   return (
     <>
-      <Header></Header>
+      {/* <Header></Header> */}
+      {/* <Main></Main> */}
+
       <div className='hello'>Hello {user.firstName}!</div>
 
       <div className='create-box'>

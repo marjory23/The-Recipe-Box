@@ -6,6 +6,7 @@ import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 
+
 function Recipe({ recipe, setCurrentRecipe}) {
 
   let navigate = useNavigate();
