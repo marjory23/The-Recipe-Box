@@ -16,7 +16,7 @@ export const currentMyRecipeSlice = createSlice({
 
   },
   reducers: {
-    updateCurrentRecipe: (state, action) => {
+    updateCurrentMyRecipe: (state, action) => {
       state.id = action.payload.id;
       state.title = action.payload.title;
       state.image = action.payload.image;

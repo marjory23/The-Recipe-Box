@@ -20,9 +20,13 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CloseIcon from '@mui/icons-material/Close';
 
-function MyRecipePage({ currentRecipe }) {
+import { useSelector } from 'react-redux';
 
-  const content = currentRecipe;
+
+function MyRecipePage() {
+
+  const content = useSelector((state) => state.currentMyRecipe);
+
 
   const navigate = useNavigate()
   const goBack = () => {
@@ -35,37 +39,14 @@ function MyRecipePage({ currentRecipe }) {
 
   return (
     <>
-      <Header></Header>
-      {/* <div className='logout-icon' onClick={logout}>
-         <img src='../logout1Traced.png' />
-      </div>
 
-      <div className='button-container'>
-        <div className='key' onClick={goBack}>«</div>
-        <div className='item-page-title'>{content.title}</div>
-      </div>
 
-      <div className='recipe-box'>
-
-        <div className='item-page'>
-
-          <div className='left-img'>
-            <img className='food-image-in-item' src={content && content.image}></img>
-          </div>
-
-          <div className='right-container'>
-            {content.duration!=null &&<div className='cooking-time'>cooking time: {content.duration}</div>}
-            <div className='all-ingredients'>
-              {content.ingredients.map((item, i)=> <p className='ingredients' key={content._id + i}>{`${item.quantity} ${item.measure} ${item.food}`}</p>)}
-            </div>
-            <div className='instructions-container'><p>{content.preparation}</p></div>
-          </div>
-
-        </div>
-
-      </div> */}
-
-<Card sx={{ maxWidth: 800, minWidth: 150 }}>
+<Card sx={{
+  maxWidth: 800,
+  minWidth: 150,
+  margin: 'auto',
+  marginTop: '20px'
+}}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -85,7 +66,6 @@ function MyRecipePage({ currentRecipe }) {
           // }
           title={`${content.title}`}
           subheader={`${content.duration > 0 ? content.duration : ''}`}
-          // subheader={`${recipe.cook_time_minutes!=null &&<h6> cooking time: {recipe.cook_time_minutes}</h6>}`}
 
         />
 

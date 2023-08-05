@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 
-import Logo from '../Vector.png';
 
+import Logo from '../Vector.png';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -21,13 +21,11 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import LogoutIcon from '@mui/icons-material/Logout';
-import PersonIcon from '@mui/icons-material/Person';
+import AccountCircle from '@mui/icons-material/AccountCircle';
 import ListIcon from '@mui/icons-material/List';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import LogoutIcon from '@mui/icons-material/Logout';
+import MoreIcon from '@mui/icons-material/MoreVert';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -69,16 +67,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function Main({
-  // user,
-  setCurrentRecipe, recipes, setRecipes }) {
- //from searchRecipe
+export default function Navbar(
+  //main
+  {
+    // user,
+    setCurrentRecipe, recipes, setRecipes }
+) {
+
+  //from searchRecipe
   const [search, setSearch] = useState('');
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(20);
   const [listSubheader, setListSubheader] = useState('')
-
   const user = useSelector((state) => state.currentUser);
+
 
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
@@ -104,7 +106,6 @@ function Main({
   let navigate = useNavigate()
 
   useEffect(() => {
-    console.log(user)
     if(!user.email) {
    navigate('/login')
     }
@@ -115,15 +116,15 @@ function Main({
   }
 
   const goToMyRecipesList = () =>{
-    // navigate('/mylist');
-    navigate('/pagemyrecipes');
-
+    navigate('/mylist');
   }
 
   const logout = () =>{
     navigate('/logout');
   }
 
+
+  //template
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -150,7 +151,6 @@ function Main({
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
-
       anchorEl={anchorEl}
       anchorOrigin={{
         vertical: 'top',
@@ -165,37 +165,8 @@ function Main({
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {/* <MenuItem onClick={handleMenuClose}>
-      <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <PersonIcon />
-        </IconButton>Profile</MenuItem> */}
-      <MenuItem onClick={handleMenuClose}>
-      <IconButton
-        size="large"
-        color="inherit"
-        >
-        <ListIcon
-        onClick={goToMyRecipesList}
-        />
-        </IconButton>
-        My List</MenuItem>
-        <MenuItem onClick={handleMenuClose}>
-      <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <PlaylistAddIcon
-          onClick={addRecipe}/>
-        </IconButton>Add Recipe</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
 
@@ -216,6 +187,24 @@ function Main({
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <MenuItem>
+        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+
+          <ListIcon />
+
+        </IconButton>
+        <p>Messages</p>
+      </MenuItem>
+      <MenuItem>
+        <IconButton
+          size="large"
+          aria-label="show 17 new notifications"
+          color="inherit"
+        >
+          <PlaylistAddIcon />
+        </IconButton>
+        <p>Notifications</p>
+      </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -224,49 +213,33 @@ function Main({
           aria-haspopup="true"
           color="inherit"
         >
-          <PersonIcon />
+          <LogoutIcon />
         </IconButton>
         <p>Profile</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-
-          size="large"
-          color="inherit"
-        >
-          <ListIcon
-          onClick={goToMyRecipesList}/>
-        </IconButton>
-
-        <p>My List</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-
-          size="large"
-          color="inherit"
-        >
-          <PlaylistAddIcon
-          onClick={addRecipe}/>
-        </IconButton>
-
-        <p>Add Recipe</p>
       </MenuItem>
     </Menu>
   );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ background: '#e4aa08' }}>
+      <AppBar position="static">
         <Toolbar>
-
-
-          <Typography
-            // noWrap
-            component='div'
-            sx={{ mr: 2, display: 'flex' }}
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            sx={{ mr: 2 }}
           >
-            <img src={Logo} width='150' height='45' max-width='100%' alt='swoop logo' />
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ display: { xs: 'none', sm: 'block' } }}
+          >
+            MUI
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -283,8 +256,29 @@ function Main({
 
 
           </Search>
+          {/* <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search> */}
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+
+              <ListIcon />
+
+            </IconButton>
+            <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+            >
+              <PlaylistAddIcon />
+            </IconButton>
             <IconButton
               size="large"
               edge="end"
@@ -293,15 +287,7 @@ function Main({
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
-              >
-              <PersonIcon />
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              onClick={logout}
-              color="inherit"
-              >
+            >
               <LogoutIcon />
             </IconButton>
           </Box>
@@ -313,7 +299,7 @@ function Main({
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
               color="inherit"
-              >
+            >
               <MoreIcon />
             </IconButton>
           </Box>
@@ -321,62 +307,6 @@ function Main({
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-            {/* <SearchRecipe
-              // recipes={recipes}
-              setRecipes={setRecipes}
-              setCurrentRecipe={setCurrentRecipe}
-
-              /> */}
-              <div>
-                {recipes.length>0 && <RecipeList
-                recipes={recipes}
-                setCurrentRecipe={setCurrentRecipe}
-                /> }
-              </div>
     </Box>
-
-
-
-
-
-
-
-
-
-
-
-
-    // <div>
-
-    //   <Header></Header>
-
-    //   <div className='hello'>Hello {user.firstName}!</div>
-    //   <div className='logout-icon' onClick={logout}>
-    //      <img src='../logout1Traced.png' />
-    //   </div>
-
-    //   <div className='button-container'>
-
-    //     <div  onClick={goToMyRecipesList}>Go to my  List</div>
-    //     <div className='add-recipe' onClick={addRecipe}>+</div>
-
-    //   </div>
-
-    //   <SearchRecipe
-    //   recipes={recipes}
-    //   setRecipes={setRecipes}
-    //   />
-
-    //   <div>
-    //     {recipes.length>0 && <RecipeList
-    //     recipes={recipes}
-    //     setCurrentRecipe={setCurrentRecipe}
-    //     /> }
-    //   </div>
-
-
-    // </div>
-  )
+  );
 }
-
-export default Main

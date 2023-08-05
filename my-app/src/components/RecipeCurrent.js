@@ -19,13 +19,16 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CloseIcon from '@mui/icons-material/Close';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 
 
-function RecipePage({  currentRecipe }) {
-  console.log(currentRecipe);
+function RecipeCurrent() {
 
-  const recipe = currentRecipe;
+  const recipe = useSelector((state) => state.currentRecipe)
+  console.log(recipe);
+
+  // const recipe = currentRecipe;
 
   const navigate = useNavigate()
   const goBack = () => {
@@ -38,15 +41,13 @@ function RecipePage({  currentRecipe }) {
 
   return (
     <>
-      <Header></Header>
-       {/* <div className='logout-icon' onClick={logout}>
-          <img src='../logout1Traced.png' />
-       </div>
 
-       <div className='button-container'>
-         <div className='key' onClick={goBack}>«</div>
-       </div> */}
-      <Card sx={{ maxWidth: 800, minWidth: 150 }}>
+      <Card sx={{
+        maxWidth: 800,
+        minWidth: 150,
+        margin: 'auto',
+        marginTop: '20px'
+      }}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -96,39 +97,6 @@ function RecipePage({  currentRecipe }) {
 
     </>
   );
-
-  // return (
-  //   <>
-  //     <Header></Header>
-  //     <div className='logout-icon' onClick={logout}>
-  //        <img src='../logout1Traced.png' />
-  //     </div>
-
-  //     <div className='button-container'>
-  //       <div className='key' onClick={goBack}>«</div>
-  //       <div className='item-page-title'>{recipe.name}</div>
-  //     </div>
-
-  //     <div className='recipe-box'>
-
-  //       <div className='item-page'>
-
-  //         <div className='left-img'>
-  //           <img className='food-image-in-item' src={recipe.thumbnail_url}></img>
-  //         </div>
-
-  //         <div className='right-container'>
-  //           {recipe.cook_time_minutes!=null &&<h6> cooking time: {recipe.cook_time_minutes}</h6>}
-  //           <div className='all-ingredients'>
-  //             {recipe.sections[0].components && recipe.sections[0].components.map((item, i)=> <p className='ingredients' key={recipe.id + i}>{item.raw_text}</p>)}
-  //             </div>
-  //       <div className='instructions-container'>{recipe.instructions.map((item, i)=> <p key={recipe.id + i}>{item.display_text}</p>)}</div>
-  //         </div>
-  //       </div>
-
-  //     </div>
-  //   </>
-  // )
 }
 
-export default RecipePage
+export default RecipeCurrent

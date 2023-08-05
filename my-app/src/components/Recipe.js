@@ -5,14 +5,28 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateCurrentRecipe } from '../store/currentRecipeSlice'
 
 
-function Recipe({ recipe, setCurrentRecipe}) {
+function Recipe(
+  { recipe, setRecipe,
+    // setCurrentRecipe
+  }
+  ) {
 
   let navigate = useNavigate();
+  const dispatch = useDispatch()
+  // const recipe = useSelector((state) => state.currentRecipe)
+
   const openRecipe = () =>{
     console.log(recipe)
-    setCurrentRecipe(recipe);
+    dispatch(updateCurrentRecipe(recipe))
+    console.log(recipe)
+    // setRecipe(recipe);
+    console.log('WOW')
+
+    // setCurrentRecipe(recipe);
     navigate('/Recipe');
   }
 
