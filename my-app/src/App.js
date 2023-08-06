@@ -37,48 +37,17 @@ function App() {
 
     <BrowserRouter>
       <Routes>
+
+        <Route path='/' element={<MainPage/>}/>
+
         <Route path='/login' element={<Login/>}/>
 
         <Route path='/logout' element={<Logout/>}/>
 
-        <Route path='/' element={<MainPage
-        // user={user}
-        // setCurrentRecipe={setCurrentRecipe}
-        // setMyCurrentRecipe={setMyCurrentRecipe}
-        // setPopupForm={setPopupForm}
-        // popupForm={popupForm}
-        // recipes={recipes}
-        // setRecipes={setRecipes}
-        />}/>
-
-        <Route path='/myrecipes' element={<MyRecipesPage
-        // user={user}
-        // setCurrentRecipe={setCurrentRecipe}
-        // setMyCurrentRecipe={setMyCurrentRecipe}
-        // setPopupForm={setPopupForm}
-        // popupForm={popupForm}
-        // recipes={recipes}
-        // setRecipes={setRecipes}
-        />}/>
-
+        <Route path='/myrecipes' element={<MyRecipesPage/>}/>
 
         <Route path='/Register' element={<Register setUser={setUser}/>} />
 
-        {/* <Route path='/' element={<Main
-        user={user}
-        setCurrentRecipe={setCurrentRecipe}
-        setMyCurrentRecipe={setMyCurrentRecipe}
-        setPopupForm={setPopupForm}
-        popupForm={popupForm}
-        recipes={recipes}
-        setRecipes={setRecipes}
-        />}/> */}
-
-        {/* <Route path='/mylist' element={<MyRecipeList
-        user={user}
-        setUser={setUser}
-        setMyCurrentRecipe={setMyCurrentRecipe}
-        />}/> */}
 
         <Route path='/add' element={<AddRecipe
         // user={user}

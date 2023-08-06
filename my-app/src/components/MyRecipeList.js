@@ -12,27 +12,20 @@ import Box from '@mui/material/Box';
 import { useSelector, useDispatch } from 'react-redux';
 import { resetAllRecipes } from '../store/allRecipesSlice'
 
-function MyRecipeList(
-  // {
-  // user,
-  // setUser, setMyCurrentRecipe }
-  ) {
+function MyRecipeList() {
 
   const dispatch = useDispatch()
+
+  let navigate = useNavigate()
+
   const user = useSelector((state) => state.currentUser);
 
   const [myRecipes, setMyRecipes] = useState(user.recipes);
-  // const myRecipes = user.recipes;
+
 
   useEffect(() => {
     dispatch(resetAllRecipes())
   }, [])
-
-
-
-  let navigate = useNavigate()
-
-
 
 
   return (
@@ -60,11 +53,6 @@ function MyRecipeList(
           return <div className='single-recipe' key={item._id}>
             <MyRecipe
             content={item}
-            // setMyRecipes={setMyRecipes}
-            // myRecipes={myRecipes}
-            // setMyCurrentRecipe={setMyCurrentRecipe}
-            // user={user}
-            // setUser={setUser}
             />
           </div>
         })}
