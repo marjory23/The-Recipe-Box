@@ -5,11 +5,17 @@ import { Route, Routes } from 'react-router-dom'
 import Register from './components/Register';
 import Login from './components/Login'
 import Main from './components/Main';
-import RecipePage from './components/RecipePage';
-import MyRecipePage from './components/MyRecipePage';
+import RecipePage from './pages/RecipePage';
+import MyRecipePage from './pages/MyRecipePage';
 import AddRecipe from './components/AddRecipe';
 import Logout from './components/Logout';
 import MyRecipeList from './components/MyRecipeList';
+
+import MainPage from './pages/MainPage';
+import Layout from './pages/Layout';
+import MyRecipesPage from './pages/MyRecipesPage';
+import SearchResultPage from './pages/SearchResultPage';
+
 
 
 function App() {
@@ -31,36 +37,29 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path='/login' element={<Login setUser={setUser}/>}/>
+
+        <Route path='/' element={<MainPage/>}/>
+
+        <Route path='/login' element={<Login/>}/>
+
+        <Route path='/logout' element={<Logout/>}/>
+
+        <Route path='/myrecipes' element={<MyRecipesPage/>}/>
+
         <Route path='/Register' element={<Register setUser={setUser}/>} />
 
-        <Route path='/' element={<Main user={user}
-        setCurrentRecipe={setCurrentRecipe}
-        setMyCurrentRecipe={setMyCurrentRecipe}
-        setPopupForm={setPopupForm}
-        popupForm={popupForm}
-        recipes={recipes}
-        setRecipes={setRecipes}
-        />}/>
-
-        <Route path='/mylist' element={<MyRecipeList
-        user={user}
-        setUser={setUser}
-        setMyCurrentRecipe={setMyCurrentRecipe}
-         />}/>
 
         <Route path='/add' element={<AddRecipe
-        user={user}
-        setUser={setUser}
-        setPopupForm={setPopupForm}
-        popupForm={popupForm}
+        // user={user}
+        // setUser={setUser}
+        // setPopupForm={setPopupForm}
+        // popupForm={popupForm}
         />}/>
 
-        <Route path='/Recipe' element={<RecipePage currentRecipe ={currentRecipe}/>}/>
-        <Route path='/MyRecipe' element={<MyRecipePage
-        currentRecipe ={myCurrentRecipe}
-        />}/>
-        <Route path='/logout' element={<Logout setUser={setUser}/>}/>
+        <Route path='/recipePage' element={<RecipePage />}/>
+        <Route path='/MyRecipe' element={<MyRecipePage/>}/>
+        <Route path='/searchResult' element={<SearchResultPage/>}/>
+
       </Routes>
     </BrowserRouter>
 

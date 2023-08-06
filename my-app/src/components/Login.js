@@ -12,13 +12,18 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { IconButton, Link } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 
+import {  useDispatch } from "react-redux";
+import { updateUser } from "../store/userSlice";
+
 const initialState = {
   email: '',
   password: '',
 };
 
-const Login = ({ setUser }) => {
+const Login = () => {
   let navigate = useNavigate();
+  const dispatch = useDispatch()
+
   const [state, setState] = useState(initialState);
   //from swoop
   const [open, setOpen] = useState(false);
@@ -44,8 +49,11 @@ const Login = ({ setUser }) => {
       setState(initialState);
     }
     else {
-      setUser(res);
+      // setUser(res);
+      dispatch(updateUser(res))
       navigate('/');
+      // navigate('/');
+
       console.log('logged in');
       console.log(res);
     }

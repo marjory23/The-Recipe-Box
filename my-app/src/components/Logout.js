@@ -11,17 +11,23 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import DialogContentText from "@mui/material/DialogContentText";
 
-  const Logout = ({ setUser }) => {
+import {  useDispatch } from "react-redux";
+import { updateUser } from "../store/userSlice";
+import { resetAllRecipes } from '../store/allRecipesSlice';
+
+  const Logout = () => {
 
     const [open, setOpen] = useState(false);
 
     let navigate = useNavigate();
+    const dispatch = useDispatch()
 
     const handleClick = () => {
       logout();
       navigate('/');
       console.log('logged out');
-      setUser({});
+      dispatch(resetAllRecipes())
+      dispatch(updateUser({}))
     };
 
     const goBack = () => {
@@ -67,25 +73,6 @@ import DialogContentText from "@mui/material/DialogContentText";
       </Dialog>
     </div>
 
-      {/* <Header></Header>
-      <div className='log-container'>
-        <h2 className='logout'>Are you sure you want to log out?</h2>
-
-
-        <div className='yes-no'>
-
-          <div onClick={goBack}>
-            <img className='no' src='../no.png' />
-          </div>
-
-          <div onClick={() => handleClick()}>
-            <img src='../yes.png' />
-          </div>
-
-        </div>
-
-
-      </div> */}
     </>
   );
 };

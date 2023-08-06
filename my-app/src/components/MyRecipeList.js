@@ -9,29 +9,24 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import Box from '@mui/material/Box';
 
-function MyRecipeList({ user, setUser, setMyCurrentRecipe }) {
-  const [myRecipes, setMyRecipes] = useState(user.recipes);
+import { useSelector, useDispatch } from 'react-redux';
+import { resetAllRecipes } from '../store/allRecipesSlice'
+
+function MyRecipeList() {
+
+  const dispatch = useDispatch()
 
   let navigate = useNavigate()
 
-  useEffect (() => {
-    console.log(user)
+  const user = useSelector((state) => state.currentUser);
+
+  const [myRecipes, setMyRecipes] = useState(user.recipes);
 
 
-  },[myRecipes] );
+  useEffect(() => {
+    dispatch(resetAllRecipes())
+  }, [])
 
-  const addRecipe = () =>{
-    navigate('/add');
-  }
-
-  const backToSearch = () =>{
-    navigate('/');
-  }
-
-  const logout = () =>{
-    navigate('/logout');
-  }
-  const back = '«'
 
   return (
 
@@ -58,50 +53,11 @@ function MyRecipeList({ user, setUser, setMyCurrentRecipe }) {
           return <div className='single-recipe' key={item._id}>
             <MyRecipe
             content={item}
-            setMyRecipes={setMyRecipes}
-            myRecipes={myRecipes}
-            setMyCurrentRecipe={setMyCurrentRecipe}
-            user={user}
-            setUser={setUser}
             />
           </div>
         })}
       </ImageList>
     </Box>
-    // <div>
-
-    //   <Header></Header>
-    //   <div className='hello'>Hello {user.firstName}!</div>
-    //   <div className='logout-icon' onClick={logout}>
-    //      <img src='../logout1Traced.png' />
-    //   </div>
-
-    //   <div className='button-container'>
-    //     <div>My Recipes List</div>
-    //     <div className='add-recipe' onClick={addRecipe}>+</div>
-    //     <div onClick={backToSearch}>{back}</div>
-    //   </div>
-
-
-    //   <div className='outer-container'>
-
-    //   <div className='recipes-container'>{myRecipes.map((item) => {
-    //     return <div className='single-recipe' key={item._id}>
-    //       <MyRecipe
-    //       content={item}
-    //       setMyRecipes={setMyRecipes}
-    //       myRecipes={myRecipes}
-    //       setMyCurrentRecipe={setMyCurrentRecipe}
-    //       user={user}
-    //       setUser={setUser}
-    //       />
-    //   </div>
-    //   })}</div>
-    //   </div>
-
-
-
-    // </div>
   )
 }
 

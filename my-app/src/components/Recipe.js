@@ -5,15 +5,30 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateCurrentRecipe } from '../store/currentRecipeSlice'
 
 
-function Recipe({ recipe, setCurrentRecipe}) {
+function Recipe(
+  {
+    recipe, setRecipe,
+    // setCurrentRecipe
+  }
+  ) {
 
   let navigate = useNavigate();
+  const dispatch = useDispatch()
+  // const recipe = useSelector((state) => state.currentRecipe)
+
   const openRecipe = () =>{
     console.log(recipe)
-    setCurrentRecipe(recipe);
-    navigate('/Recipe');
+    dispatch(updateCurrentRecipe(recipe))
+    console.log(recipe)
+    // setRecipe(recipe);
+
+    // setCurrentRecipe(recipe);
+    navigate('/recipePage');
+    console.log('WOW')
   }
 
   return (
@@ -39,14 +54,6 @@ function Recipe({ recipe, setCurrentRecipe}) {
             }
           />
         </ImageListItem>
-
-        {/* <div className='item-in-list'>
-          <div className='recipe-container' onClick={openRecipe}>
-            <div className='recipe-title'>{recipe.name}</div>
-            <img className='food-image' src={recipe.thumbnail_url}></img>
-          </div>
-
-        </div> */}
       </>
 
     )

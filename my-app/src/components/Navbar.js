@@ -4,7 +4,8 @@ import SearchRecipe from './SearchRecipe';
 import RecipeList from './RecipeList';
 import Header from './Header'
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateAllRecipes , resetAllRecipes } from '../store/allRecipesSlice';
 
 
 import Logo from '../Vector.png';
@@ -69,10 +70,17 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function Main({
-  // user,
-  setCurrentRecipe, recipes, setRecipes }) {
+function Navbar(
+  // { user, setCurrentRecipe, recipes, setRecipes }
+  ) {
  //from searchRecipe
+
+ const dispatch = useDispatch();
+ let navigate = useNavigate()
+  // const [currentRecipe, setCurrentRecipe] = useState({});
+//  const [recipes, setRecipes] = useState([]);
+  const recipes = useSelector((state) => state.allRecipes.recipes);
+
   const [search, setSearch] = useState('');
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(20);
@@ -83,25 +91,30 @@ function Main({
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
       handleSubmit(e);
+      dispatch(resetAllRecipes())
     }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSearch(e.target.value);
+    console.log(recipes)
     await fetchRecipes(search, start, end)
     .then(data => {
-      if (data) setRecipes(data.results)
+      if (data) dispatch(updateAllRecipes({recipes: data.results}))
+      // if (data) setRecipes(data.results)
     })
 
     console.log(search)
     setListSubheader(search);
     console.log(recipes)
     setSearch('');
+    // navigate('/')
+    navigate('/searchResult')
+
     }
   //end
 
-  let navigate = useNavigate()
 
   useEffect(() => {
     console.log(user)
@@ -116,7 +129,8 @@ function Main({
 
   const goToMyRecipesList = () =>{
     // navigate('/mylist');
-    navigate('/pagemyrecipes');
+    console.log('eorking')
+    navigate('/myrecipes');
 
   }
 
@@ -165,23 +179,15 @@ function Main({
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {/* <MenuItem onClick={handleMenuClose}>
-      <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <PersonIcon />
-        </IconButton>Profile</MenuItem> */}
       <MenuItem onClick={handleMenuClose}>
       <IconButton
         size="large"
         color="inherit"
+        onClick={goToMyRecipesList}
+
         >
         <ListIcon
-        onClick={goToMyRecipesList}
+        // onClick={goToMyRecipesList}
         />
         </IconButton>
         My List</MenuItem>
@@ -192,9 +198,12 @@ function Main({
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
+          onClick={addRecipe}
+
         >
           <PlaylistAddIcon
-          onClick={addRecipe}/>
+          // onClick={addRecipe}
+          />
         </IconButton>Add Recipe</MenuItem>
     </Menu>
   );
@@ -216,26 +225,17 @@ function Main({
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <PersonIcon />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
       <MenuItem>
         <IconButton
 
           size="large"
           color="inherit"
+          onClick={goToMyRecipesList}
+
         >
           <ListIcon
-          onClick={goToMyRecipesList}/>
+          // onClick={goToMyRecipesList}
+          />
         </IconButton>
 
         <p>My List</p>
@@ -245,12 +245,31 @@ function Main({
 
           size="large"
           color="inherit"
+          onClick={addRecipe}
+
         >
           <PlaylistAddIcon
-          onClick={addRecipe}/>
+          // onClick={addRecipe}
+          />
         </IconButton>
 
         <p>Add Recipe</p>
+      </MenuItem>
+      <MenuItem onClick={handleProfileMenuOpen}>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+          onClick={logout}
+
+        >
+          <LogoutIcon
+          //  onClick={logout}
+           />
+        </IconButton>
+        <p>Logout</p>
       </MenuItem>
     </Menu>
   );
@@ -327,56 +346,13 @@ function Main({
               setCurrentRecipe={setCurrentRecipe}
 
               /> */}
-              <div>
-                {recipes.length>0 && <RecipeList
-                recipes={recipes}
-                setCurrentRecipe={setCurrentRecipe}
-                /> }
-              </div>
+
+              {/* <div>
+                {recipes.length>0 && <RecipeList/> }
+              </div> */}
     </Box>
 
-
-
-
-
-
-
-
-
-
-
-
-    // <div>
-
-    //   <Header></Header>
-
-    //   <div className='hello'>Hello {user.firstName}!</div>
-    //   <div className='logout-icon' onClick={logout}>
-    //      <img src='../logout1Traced.png' />
-    //   </div>
-
-    //   <div className='button-container'>
-
-    //     <div  onClick={goToMyRecipesList}>Go to my  List</div>
-    //     <div className='add-recipe' onClick={addRecipe}>+</div>
-
-    //   </div>
-
-    //   <SearchRecipe
-    //   recipes={recipes}
-    //   setRecipes={setRecipes}
-    //   />
-
-    //   <div>
-    //     {recipes.length>0 && <RecipeList
-    //     recipes={recipes}
-    //     setCurrentRecipe={setCurrentRecipe}
-    //     /> }
-    //   </div>
-
-
-    // </div>
   )
 }
 
-export default Main
+export default Navbar

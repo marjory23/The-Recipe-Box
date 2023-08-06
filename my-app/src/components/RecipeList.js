@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Recipe from './Recipe';
 // import './List.css';
 import ImageList from '@mui/material/ImageList';
@@ -6,11 +6,19 @@ import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import Box from '@mui/material/Box';
+import { useSelector } from 'react-redux';
 
 
 
-function RecipeList({ recipes,setCurrentRecipe }) {
- 
+function RecipeList(
+  // { recipes,setCurrentRecipe }
+  ) {
+  const recipes = useSelector((state) => state.allRecipes.recipes);
+  const [recipe, setRecipe] = useState({})
+
+  useEffect(() => {
+    console.log(recipes)
+  }, [])
 
 
   return (
@@ -33,34 +41,17 @@ function RecipeList({ recipes,setCurrentRecipe }) {
 
       // sx={{ width: 500, height: 450 }}
       >
-        {recipes.map(recipe => {
+        {recipes[0].id != 0 && (recipes.map(recipe => {
           return <div className='single-recipe' key={recipe.id}>
             <Recipe
             recipe={recipe}
-            setCurrentRecipe={setCurrentRecipe}
+            setRecipe={setRecipe}
+            // setCurrentRecipe={setCurrentRecipe}
             />
           </div>
-        })}
+        }))}
       </ImageList>
     </Box>
-
-
-
-
-
-    // <div className='outer-container'>
-
-    //   <div className='recipes-container'>{recipes.map(recipe => {
-    //     return <div className='single-recipe' key={recipe.id}>
-    //       <Recipe
-    //       recipe={recipe}
-    //       setCurrentRecipe={setCurrentRecipe}
-    //       />
-    //     </div>
-    //   })}</div>
-
-
-    // </div>
   )
 }
 

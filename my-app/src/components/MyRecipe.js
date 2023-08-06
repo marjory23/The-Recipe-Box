@@ -7,28 +7,40 @@ import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 
-function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe, user, setUser }) {
+import { useSelector } from 'react-redux';
+import { useDispatch } from "react-redux";
+import { updateCurrentMyRecipe } from '../store/currentMyRecipeSlice'
+
+function MyRecipe({ content }) {
 
 
   let navigate = useNavigate();
+  const dispatch = useDispatch()
 
-  const deleteThis = async () => {
-    const data = await deleteRecipe(content._id);
-    console.log( data)
-    console.log(user)
-    const x = user.recipes.filter((item) => {return item._id !== data._id})
-    console.log(x)
-    setMyRecipes([...x])
+  const user = useSelector((state) => state.currentUser);
+  const currentMyRecipe = useSelector((state) => state.currentMyRecipe);
 
-    setUser(user => ({
-      ...user,
-      recipes: [...x]
-    }))
-  }
+
+
+//   const deleteThis = async () => {
+//     const data = await deleteRecipe(content._id);
+//     console.log( data)
+//     console.log(user)
+//     const x = user.recipes.filter((item) => {return item._id !== data._id})
+//     console.log(x)
+//     setMyRecipes([...x])
+// // questa parte dovà essere modificata
+//     setUser(user => ({
+//       ...user,
+//       recipes: [...x]
+//     }))
+//   }
 
   const openRecipe = () =>{
     console.log(content)
-    setMyCurrentRecipe(content);
+    console.log('blabla')
+    dispatch(updateCurrentMyRecipe(content))
+
     navigate('/MyRecipe');
   }
 
