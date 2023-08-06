@@ -4,11 +4,12 @@ import SearchRecipe from './SearchRecipe';
 import RecipeList from './RecipeList';
 import Header from './Header'
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { updateAllRecipes , resetAllRecipes } from '../store/allRecipesSlice';
 
 
 import Logo from '../Vector.png';
+
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -21,11 +22,13 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import ListIcon from '@mui/icons-material/List';
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import LogoutIcon from '@mui/icons-material/Logout';
+import PersonIcon from '@mui/icons-material/Person';
+import ListIcon from '@mui/icons-material/List';
+import MailIcon from '@mui/icons-material/Mail';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -67,45 +70,54 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Navbar(
-  //main
-  {
-    // user,
-    setCurrentRecipe, recipes, setRecipes }
-) {
+function Navbar(
+  // { user, setCurrentRecipe, recipes, setRecipes }
+  ) {
+ //from searchRecipe
 
-  //from searchRecipe
+ const dispatch = useDispatch();
+ let navigate = useNavigate()
+  // const [currentRecipe, setCurrentRecipe] = useState({});
+//  const [recipes, setRecipes] = useState([]);
+  const recipes = useSelector((state) => state.allRecipes.recipes);
+
   const [search, setSearch] = useState('');
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(20);
   const [listSubheader, setListSubheader] = useState('')
-  const user = useSelector((state) => state.currentUser);
 
+  const user = useSelector((state) => state.currentUser);
 
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
       handleSubmit(e);
+      dispatch(resetAllRecipes())
     }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSearch(e.target.value);
+    console.log(recipes)
     await fetchRecipes(search, start, end)
     .then(data => {
-      if (data) setRecipes(data.results)
+      if (data) dispatch(updateAllRecipes({recipes: data.results}))
+      // if (data) setRecipes(data.results)
     })
 
     console.log(search)
     setListSubheader(search);
     console.log(recipes)
     setSearch('');
+    // navigate('/')
+    navigate('/searchResult')
+
     }
   //end
 
-  let navigate = useNavigate()
 
   useEffect(() => {
+    console.log(user)
     if(!user.email) {
    navigate('/login')
     }
@@ -116,15 +128,16 @@ export default function Navbar(
   }
 
   const goToMyRecipesList = () =>{
-    navigate('/mylist');
+    // navigate('/mylist');
+    console.log('eorking')
+    navigate('/myrecipes');
+
   }
 
   const logout = () =>{
     navigate('/logout');
   }
 
-
-  //template
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -151,6 +164,7 @@ export default function Navbar(
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
+
       anchorEl={anchorEl}
       anchorOrigin={{
         vertical: 'top',
@@ -165,8 +179,32 @@ export default function Navbar(
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+      <IconButton
+        size="large"
+        color="inherit"
+        onClick={goToMyRecipesList}
+
+        >
+        <ListIcon
+        // onClick={goToMyRecipesList}
+        />
+        </IconButton>
+        My List</MenuItem>
+        <MenuItem onClick={handleMenuClose}>
+      <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+          onClick={addRecipe}
+
+        >
+          <PlaylistAddIcon
+          // onClick={addRecipe}
+          />
+        </IconButton>Add Recipe</MenuItem>
     </Menu>
   );
 
@@ -188,22 +226,34 @@ export default function Navbar(
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+        <IconButton
 
-          <ListIcon />
+          size="large"
+          color="inherit"
+          onClick={goToMyRecipesList}
 
+        >
+          <ListIcon
+          // onClick={goToMyRecipesList}
+          />
         </IconButton>
-        <p>Messages</p>
+
+        <p>My List</p>
       </MenuItem>
       <MenuItem>
         <IconButton
+
           size="large"
-          aria-label="show 17 new notifications"
           color="inherit"
+          onClick={addRecipe}
+
         >
-          <PlaylistAddIcon />
+          <PlaylistAddIcon
+          // onClick={addRecipe}
+          />
         </IconButton>
-        <p>Notifications</p>
+
+        <p>Add Recipe</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -212,34 +262,30 @@ export default function Navbar(
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
+          onClick={logout}
+
         >
-          <LogoutIcon />
+          <LogoutIcon
+          //  onClick={logout}
+           />
         </IconButton>
-        <p>Profile</p>
+        <p>Logout</p>
       </MenuItem>
     </Menu>
   );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ background: '#e4aa08' }}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+
+
           <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
+            // noWrap
+            component='div'
+            sx={{ mr: 2, display: 'flex' }}
           >
-            MUI
+            <img src={Logo} width='150' height='45' max-width='100%' alt='swoop logo' />
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -256,29 +302,8 @@ export default function Navbar(
 
 
           </Search>
-          {/* <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search> */}
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-
-              <ListIcon />
-
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <PlaylistAddIcon />
-            </IconButton>
             <IconButton
               size="large"
               edge="end"
@@ -287,7 +312,15 @@ export default function Navbar(
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
-            >
+              >
+              <PersonIcon />
+            </IconButton>
+            <IconButton
+              size="large"
+              edge="end"
+              onClick={logout}
+              color="inherit"
+              >
               <LogoutIcon />
             </IconButton>
           </Box>
@@ -299,7 +332,7 @@ export default function Navbar(
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
               color="inherit"
-            >
+              >
               <MoreIcon />
             </IconButton>
           </Box>
@@ -307,6 +340,19 @@ export default function Navbar(
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+            {/* <SearchRecipe
+              // recipes={recipes}
+              setRecipes={setRecipes}
+              setCurrentRecipe={setCurrentRecipe}
+
+              /> */}
+
+              {/* <div>
+                {recipes.length>0 && <RecipeList/> }
+              </div> */}
     </Box>
-  );
+
+  )
 }
+
+export default Navbar

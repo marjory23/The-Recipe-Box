@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from './Layout';
 import MyRecipeList from '../components/MyRecipeList';
 
-function PageOfMyRecipes() {
+function MyRecipesPage() {
   return (
     <Layout>
       <MyRecipeList/>
@@ -10,4 +10,4 @@ function PageOfMyRecipes() {
   )
 }
 
-export default PageOfMyRecipes
+export default MyRecipesPage

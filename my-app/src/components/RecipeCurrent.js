@@ -27,17 +27,24 @@ function RecipeCurrent() {
 
   const recipe = useSelector((state) => state.currentRecipe)
   console.log(recipe);
+  // console.log(recipe.name);
+  // console.log(recipe.thumbnail_url);
+  // console.log(recipe.cook_time_minutes);
+  // console.log(recipe.sections[0].components);
+  // console.log(recipe.instructions);
+
 
   // const recipe = currentRecipe;
 
   const navigate = useNavigate()
+
   const goBack = () => {
     navigate(-1);
   }
 
-  const logout = () =>{
-    navigate('/logout');
-  }
+  // const logout = () =>{
+  //   navigate('/logout');
+  // }
 
   return (
     <>
@@ -79,17 +86,28 @@ function RecipeCurrent() {
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary" align="left">
-          {recipe.sections[0].components
+          {recipe.sections[0].components &&
+        recipe.sections[0].components.map((item, i) => (
+          <Typography key={recipe.id + i} component="p"> {/* Modifica qui l'elemento */}
+            {item.raw_text}
+          </Typography>
+        ))}
+          {/* {recipe.sections[0].components
           &&
           recipe.sections[0].components.map((item, i)=>
-          <p key={recipe.id + i}>{item.raw_text}</p>)}
+          <p key={recipe.id + i}>{item.raw_text}</p>)} */}
           </Typography>
         </CardContent>
 
         <CardContent>
           <Typography paragraph align="left">Method:</Typography>
           <Typography paragraph align="left">
-          {recipe.instructions.map((item, i)=> <p key={recipe.id + i}>{item.display_text}</p>)}
+          {recipe.instructions.map((item, i) => (
+        <Typography key={recipe.id + i} component="p"> {/* Modifica qui l'elemento */}
+          {item.display_text}
+        </Typography>
+      ))}
+          {/* {recipe.instructions.map((item, i)=> <p key={recipe.id + i}>{item.display_text}</p>)} */}
           </Typography>
         </CardContent>
 

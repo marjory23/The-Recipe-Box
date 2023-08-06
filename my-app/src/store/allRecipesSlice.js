@@ -16,6 +16,7 @@ export const allRecipesSlice = createSlice({
   },
   reducers: {
     updateAllRecipes: (state, action) => {
+      // state.recipes = action.payload.recipes
       const newRecipes = action.payload.recipes;
       if (Array.isArray(newRecipes)) {
         state.recipes = newRecipes;

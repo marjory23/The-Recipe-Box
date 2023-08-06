@@ -9,36 +9,31 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import Box from '@mui/material/Box';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { resetAllRecipes } from '../store/allRecipesSlice'
 
-function MyRecipeList({
+function MyRecipeList(
+  // {
   // user,
-  setUser, setMyCurrentRecipe }) {
+  // setUser, setMyCurrentRecipe }
+  ) {
+
+  const dispatch = useDispatch()
   const user = useSelector((state) => state.currentUser);
 
   const [myRecipes, setMyRecipes] = useState(user.recipes);
+  // const myRecipes = user.recipes;
+
+  useEffect(() => {
+    dispatch(resetAllRecipes())
+  }, [])
+
 
 
   let navigate = useNavigate()
 
-  useEffect (() => {
-    console.log(user)
 
 
-  },[myRecipes] );
-
-  const addRecipe = () =>{
-    navigate('/add');
-  }
-
-  const backToSearch = () =>{
-    navigate('/');
-  }
-
-  const logout = () =>{
-    navigate('/logout');
-  }
-  const back = '«'
 
   return (
 
@@ -65,11 +60,11 @@ function MyRecipeList({
           return <div className='single-recipe' key={item._id}>
             <MyRecipe
             content={item}
-            setMyRecipes={setMyRecipes}
-            myRecipes={myRecipes}
-            setMyCurrentRecipe={setMyCurrentRecipe}
-            user={user}
-            setUser={setUser}
+            // setMyRecipes={setMyRecipes}
+            // myRecipes={myRecipes}
+            // setMyCurrentRecipe={setMyCurrentRecipe}
+            // user={user}
+            // setUser={setUser}
             />
           </div>
         })}

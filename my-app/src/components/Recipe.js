@@ -10,7 +10,8 @@ import { updateCurrentRecipe } from '../store/currentRecipeSlice'
 
 
 function Recipe(
-  { recipe, setRecipe,
+  {
+    recipe, setRecipe,
     // setCurrentRecipe
   }
   ) {
@@ -24,10 +25,10 @@ function Recipe(
     dispatch(updateCurrentRecipe(recipe))
     console.log(recipe)
     // setRecipe(recipe);
-    console.log('WOW')
 
     // setCurrentRecipe(recipe);
-    navigate('/Recipe');
+    navigate('/recipePage');
+    console.log('WOW')
   }
 
   return (
@@ -53,14 +54,6 @@ function Recipe(
             }
           />
         </ImageListItem>
-
-        {/* <div className='item-in-list'>
-          <div className='recipe-container' onClick={openRecipe}>
-            <div className='recipe-title'>{recipe.name}</div>
-            <img className='food-image' src={recipe.thumbnail_url}></img>
-          </div>
-
-        </div> */}
       </>
 
     )

@@ -23,7 +23,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useSelector } from 'react-redux';
 
 
-function MyRecipePage() {
+function MyRecipeCurrent() {
 
   const content = useSelector((state) => state.currentMyRecipe);
 
@@ -33,9 +33,9 @@ function MyRecipePage() {
     navigate(-1);
   }
 
-  const logout = () =>{
-    navigate('/logout');
-  }
+  // const logout = () =>{
+  //   navigate('/logout');
+  // }
 
   return (
     <>
@@ -96,4 +96,4 @@ function MyRecipePage() {
   )
 }
 
-export default MyRecipePage
+export default MyRecipeCurrent

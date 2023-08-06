@@ -20,7 +20,7 @@ const initialState = {
   password: '',
 };
 
-const Login = ({ setUser }) => {
+const Login = () => {
   let navigate = useNavigate();
   const dispatch = useDispatch()
 
@@ -51,7 +51,7 @@ const Login = ({ setUser }) => {
     else {
       // setUser(res);
       dispatch(updateUser(res))
-      navigate('/pageone');
+      navigate('/');
       // navigate('/');
 
       console.log('logged in');

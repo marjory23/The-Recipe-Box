@@ -1,14 +1,10 @@
 import React from 'react';
 import Layout from './Layout';
 
-const PageOne = () => {
+const MainPage = () => {
   return (
-    <Layout>
-      <div>
-        Contenuto Pagina Uno
-      </div>
-    </Layout>
+    <Layout />
   );
 };
 
-export default PageOne;
+export default MainPage;

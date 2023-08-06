@@ -1,12 +1,14 @@
 import React from 'react';
-import Navbar2 from '../components/Navbar2';
-import Main from '../components/Main';
+import Navbar from '../components/Navbar';
 
 
-const Layout = ({ children, user }) => {
+
+const Layout = ({ children }) => {
+
+
   return (
     <>
-      <Navbar2 />
+      <Navbar />
       <div style={{ padding: '20px' }}>
         {children}
       </div>

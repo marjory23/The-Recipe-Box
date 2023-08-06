@@ -11,9 +11,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from "react-redux";
 import { updateCurrentMyRecipe } from '../store/currentMyRecipeSlice'
 
-function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe,
-  // user,
-  setUser }) {
+function MyRecipe({ content }) {
 
 
   let navigate = useNavigate();
@@ -24,25 +22,25 @@ function MyRecipe({ content, setMyRecipes, myRecipes, setMyCurrentRecipe,
 
 
 
-  const deleteThis = async () => {
-    const data = await deleteRecipe(content._id);
-    console.log( data)
-    console.log(user)
-    const x = user.recipes.filter((item) => {return item._id !== data._id})
-    console.log(x)
-    setMyRecipes([...x])
-// questa parte dovà essere modificata
-    setUser(user => ({
-      ...user,
-      recipes: [...x]
-    }))
-  }
+//   const deleteThis = async () => {
+//     const data = await deleteRecipe(content._id);
+//     console.log( data)
+//     console.log(user)
+//     const x = user.recipes.filter((item) => {return item._id !== data._id})
+//     console.log(x)
+//     setMyRecipes([...x])
+// // questa parte dovà essere modificata
+//     setUser(user => ({
+//       ...user,
+//       recipes: [...x]
+//     }))
+//   }
 
   const openRecipe = () =>{
     console.log(content)
     console.log('blabla')
     dispatch(updateCurrentMyRecipe(content))
-    // setMyCurrentRecipe(content);
+
     navigate('/MyRecipe');
   }
 
