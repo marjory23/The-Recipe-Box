@@ -21,6 +21,7 @@ function MyRecipe({ content }) {
   const currentMyRecipe = useSelector((state) => state.currentMyRecipe);
 
 
+// TODO: delete function
 
 //   const deleteThis = async () => {
 //     const data = await deleteRecipe(content._id);
