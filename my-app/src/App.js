@@ -15,6 +15,7 @@ import MainPage from './pages/MainPage';
 import Layout from './pages/Layout';
 import MyRecipesPage from './pages/MyRecipesPage';
 import SearchResultPage from './pages/SearchResultPage';
+import AddRecipePage from './pages/AddRecipePage';
 
 
 
@@ -49,12 +50,14 @@ function App() {
         <Route path='/Register' element={<Register setUser={setUser}/>} />
 
 
-        <Route path='/add' element={<AddRecipe
-        // user={user}
-        // setUser={setUser}
-        // setPopupForm={setPopupForm}
-        // popupForm={popupForm}
-        />}/>
+        {/* <Route path='/add' element={<AddRecipe
+        user={user}
+        setUser={setUser}
+        setPopupForm={setPopupForm}
+        popupForm={popupForm}
+        />}/> */}
+
+        <Route path='/add' element={<AddRecipePage />}/>
 
         <Route path='/recipePage' element={<RecipePage />}/>
         <Route path='/MyRecipe' element={<MyRecipePage/>}/>
