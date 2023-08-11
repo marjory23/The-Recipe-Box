@@ -77,9 +77,21 @@ function MyRecipeCurrent() {
           alt={`${content.title}`}
         />
         <CardContent>
+
           <Typography variant="body2" color="text.secondary" align="left">
-          {content && content.ingredients.map((item, i)=> <p className='ingredients' key={content._id + i}>{`${item.quantity} ${item.measure} ${item.food}`}</p>)}
+          {content &&
+          content.ingredients.map((item, i)=> (
+          <Typography key={content._id + i} component="p">
+            {`${item.quantity} ${item.measure} ${item.food}`}
+
           </Typography>
+          ))}
+          </Typography>
+
+          {/* <Typography variant="body2" color="text.secondary" align="left">
+          {content &&
+          content.ingredients.map((item, i)=> <p className='ingredients' key={content._id + i}>{`${item.quantity} ${item.measure} ${item.food}`}</p>)}
+          </Typography> */}
         </CardContent>
 
         <CardContent>

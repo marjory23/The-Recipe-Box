@@ -6,6 +6,7 @@ import Header from './Header'
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateAllRecipes , resetAllRecipes } from '../store/allRecipesSlice';
+import { updateCurrentSearch } from '../store/searchSlice';
 
 
 import Logo from '../Vector.png';
@@ -70,21 +71,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function Navbar(
-  // { user, setCurrentRecipe, recipes, setRecipes }
-  ) {
- //from searchRecipe
+function Navbar() {
+
 
  const dispatch = useDispatch();
  let navigate = useNavigate()
-  // const [currentRecipe, setCurrentRecipe] = useState({});
-//  const [recipes, setRecipes] = useState([]);
+
+
   const recipes = useSelector((state) => state.allRecipes.recipes);
+  const currentSearch = useSelector((state) => state.currentSearch.title);
 
   const [search, setSearch] = useState('');
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(20);
-  const [listSubheader, setListSubheader] = useState('')
+
 
   const user = useSelector((state) => state.currentUser);
 
@@ -97,7 +97,9 @@ function Navbar(
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setSearch(e.target.value);
+    dispatch(updateCurrentSearch({ title: search }))
     console.log(recipes)
     await fetchRecipes(search, start, end)
     .then(data => {
@@ -106,14 +108,15 @@ function Navbar(
     })
 
     console.log(search)
-    setListSubheader(search);
+    console.log(currentSearch)
+
     console.log(recipes)
     setSearch('');
-    // navigate('/')
+
     navigate('/searchResult')
 
     }
-  //end
+
 
 
   useEffect(() => {
@@ -128,8 +131,7 @@ function Navbar(
   }
 
   const goToMyRecipesList = () =>{
-    // navigate('/mylist');
-    console.log('eorking')
+
     navigate('/myrecipes');
 
   }
@@ -187,7 +189,6 @@ function Navbar(
 
         >
         <ListIcon
-        // onClick={goToMyRecipesList}
         />
         </IconButton>
         My List</MenuItem>
@@ -202,7 +203,6 @@ function Navbar(
 
         >
           <PlaylistAddIcon
-          // onClick={addRecipe}
           />
         </IconButton>Add Recipe</MenuItem>
     </Menu>
@@ -234,7 +234,6 @@ function Navbar(
 
         >
           <ListIcon
-          // onClick={goToMyRecipesList}
           />
         </IconButton>
 
@@ -249,7 +248,6 @@ function Navbar(
 
         >
           <PlaylistAddIcon
-          // onClick={addRecipe}
           />
         </IconButton>
 
@@ -266,7 +264,6 @@ function Navbar(
 
         >
           <LogoutIcon
-          //  onClick={logout}
            />
         </IconButton>
         <p>Logout</p>
@@ -340,16 +337,7 @@ function Navbar(
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-            {/* <SearchRecipe
-              // recipes={recipes}
-              setRecipes={setRecipes}
-              setCurrentRecipe={setCurrentRecipe}
 
-              /> */}
-
-              {/* <div>
-                {recipes.length>0 && <RecipeList/> }
-              </div> */}
     </Box>
 
   )

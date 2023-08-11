@@ -2,19 +2,16 @@ import React, { useState, useEffect } from 'react'
 import IngredientInput from './IngredientInput';
 import { createRecipe } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
-import Header from './Header';
-import Main from './Main';
 import ImgUploader from './ImgUploader';
-import './Create.css';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Card, CardContent, Typography, TextField, Button, Grid } from '@mui/material';
+import { Card, CardContent, Typography, TextField, Button, Box, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+
 import { addMyRecipe } from '../store/userSlice';
 
 
-function AddRecipe(
-  // { user, setUser }
-  ) {
+function AddRecipe() {
 
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState([{ food: '', quantity: '', measure: ''}]);
@@ -161,17 +158,34 @@ function AddRecipe(
 
   return (
     <>
-      <div className='hello'>Hello {user.firstName}!</div>
 
-      <Card variant="outlined" sx={{ maxWidth: 600, margin: '0 auto', marginTop: 20 }}>
+      <Card variant="outlined" sx={{ maxWidth: 600, margin: '0 auto', marginTop: 5, position: 'relative' }}>
         <CardContent>
-          <Typography variant="h5" component="div" gutterBottom>
+        <IconButton sx={{ padding: 0, position: 'absolute', top: 15, right: 15 }}
+          onClick={goBack}
+          >
+            <CloseIcon sx={{ fontSize: '1.3em' }} />
+          </IconButton>
+
+          <Typography variant="h5" gutterBottom
+          sx={{ marginTop: 5 }}
+          >
             Create a New Recipe
           </Typography>
 
-          <form onSubmit={(e) => handleSubmit(e)}>
+          <form onSubmit={(e) => handleSubmit(e)}
+           style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around",
+            alignItems: "center",
+            padding: "2rem",
+
+          }}
+          >
             <div className='input-box'>
               <TextField
+                sx={{ marginBottom: '1rem' }}
                 required
                 fullWidth
                 label='Title'
@@ -180,30 +194,38 @@ function AddRecipe(
                 onChange={(e) => setTitle(e.target.value)}
               />
 
-              <div>
+              <Box
+              sx={{ marginBottom: '0.5rem' }}>
                 {ingredients.map((x, i) => (
-                  <div key={i}>
+                  <Box key={i}
+                  sx={{ marginBottom: '0.5rem' }}>
                     <IngredientInput
                       i={i}
                       ingredients={ingredients}
                       handleIngredientChange={handleIngredientChange}
                     />
-                  </div>
+                  </Box>
                 ))}
-              </div>
+              </Box>
 
-              <div className='add-or-remove-last'>
+              <Box
+              sx={{ marginBottom: '1rem', display: 'flex', gap: '0.5rem', justifyContent: 'center', }}
+              className='add-or-remove-last'>
                 {ingredients.length > 1 && (
-                  <Button className='key' variant="outlined" onClick={removeLastIng}>-</Button>
+                  <Button className='key' variant="contained" onClick={removeLastIng}>-</Button>
                 )}
-                <Button className='key' variant="outlined" onClick={addIngredientInput}>+</Button>
-              </div>
+                <Button className='key' variant="contained" onClick={addIngredientInput}>+</Button>
+              </Box>
 
-              <Button variant="outlined" onClick={() => setPopupImgUploader(true)}>
+              <Button
+              sx={{ marginBottom: '1rem' }}
+              variant="contained"
+              onClick={() => setPopupImgUploader(true)}>
                 Add Photo
               </Button>
 
               <TextField
+              sx={{ marginBottom: '1rem' }}
                 required
                 fullWidth
                 label='Duration'
@@ -213,6 +235,7 @@ function AddRecipe(
               />
 
               <TextField
+                sx={{ marginBottom: '1rem' }}
                 required
                 fullWidth
                 multiline

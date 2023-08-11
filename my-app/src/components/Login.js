@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {login} from './../ApiService';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
-// import './Log.css'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -25,7 +24,7 @@ const Login = () => {
   const dispatch = useDispatch()
 
   const [state, setState] = useState(initialState);
-  //from swoop
+
   const [open, setOpen] = useState(false);
 
   const handleChange = (e) => {
@@ -36,7 +35,7 @@ const Login = () => {
     }));
   };
 
-  // MY CODE
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,10 +48,9 @@ const Login = () => {
       setState(initialState);
     }
     else {
-      // setUser(res);
       dispatch(updateUser(res))
       navigate('/');
-      // navigate('/');
+
 
       console.log('logged in');
       console.log(res);
@@ -67,7 +65,7 @@ const Login = () => {
   const validateForm = () => {
     return !state.email || !state.password;
   };
-//from swoop
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -75,7 +73,7 @@ const Login = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  //end
+
 
   useEffect(() => {
     handleClickOpen();
@@ -83,38 +81,10 @@ const Login = () => {
 
   return (
     <>
-      {/* <Header></Header> */}
 
-      {/* <section className='log-container'>
-        <h2>Login</h2>
-        <form className="form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="email"
-            name="email"
-            value={state.email}
-            onChange={handleChange}
-          />
-          <input
-            type="password"
-            placeholder="password"
-            name="password"
-            value={state.password}
-            onChange={handleChange}
-          />
-          <button className="form-submit" type="submit" disabled={validateForm()}>
-            &nbsp;Login&nbsp;
-          </button>
-        </form>
-        <div>or create an account</div>
-        <button className="form-submit" onClick={goToRegister}>Register</button>
-      </section> */}
+
+
       <div>
-      {/* <Button variant="contained" sx={{ display: { xs: 'none', md: 'block' } }}
-      onClick={handleClickOpen}
-      >
-        Log in/ Register
-      </Button> */}
       <Button variant="contained" size='small' sx={{ display: { xs: 'block', md: 'none' } }}
       onClick={handleClickOpen}
       >
