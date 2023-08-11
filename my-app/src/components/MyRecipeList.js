@@ -33,6 +33,9 @@ function MyRecipeList() {
     <Box
     sx={{ mx: 10 }}
     >
+      <ImageListItem key="Subheader" cols={2}>
+        <ListSubheader component="div">{user.firstName}'s Recipes List</ListSubheader>
+      </ImageListItem>
       <ImageList
 
       variant="masonry"
