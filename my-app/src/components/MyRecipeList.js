@@ -20,12 +20,12 @@ function MyRecipeList() {
 
   const user = useSelector((state) => state.currentUser);
 
-  const [myRecipes, setMyRecipes] = useState(user.recipes);
+  const myRecipes = useSelector((state) => state.currentUser.recipes);
 
 
   useEffect(() => {
     dispatch(resetAllRecipes())
-  }, [])
+  }, [myRecipes])
 
 
   return (
