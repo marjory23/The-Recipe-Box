@@ -71,22 +71,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function Navbar(
-  // { user, setCurrentRecipe, recipes, setRecipes }
-  ) {
- //from searchRecipe
+function Navbar() {
+
 
  const dispatch = useDispatch();
  let navigate = useNavigate()
-  // const [currentRecipe, setCurrentRecipe] = useState({});
-//  const [recipes, setRecipes] = useState([]);
+
+
   const recipes = useSelector((state) => state.allRecipes.recipes);
   const currentSearch = useSelector((state) => state.currentSearch.title);
 
   const [search, setSearch] = useState('');
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(20);
-  // const [listSubheader, setListSubheader] = useState('')
+
 
   const user = useSelector((state) => state.currentUser);
 
@@ -99,7 +97,7 @@ function Navbar(
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     setSearch(e.target.value);
     dispatch(updateCurrentSearch({ title: search }))
     console.log(recipes)
@@ -112,14 +110,13 @@ function Navbar(
     console.log(search)
     console.log(currentSearch)
 
-    // setListSubheader(search);
     console.log(recipes)
     setSearch('');
-    // navigate('/')
+
     navigate('/searchResult')
 
     }
-  //end
+
 
 
   useEffect(() => {
@@ -134,8 +131,7 @@ function Navbar(
   }
 
   const goToMyRecipesList = () =>{
-    // navigate('/mylist');
-    console.log('eorking')
+
     navigate('/myrecipes');
 
   }
@@ -341,16 +337,7 @@ function Navbar(
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-            {/* <SearchRecipe
-              // recipes={recipes}
-              setRecipes={setRecipes}
-              setCurrentRecipe={setCurrentRecipe}
 
-              /> */}
-
-              {/* <div>
-                {recipes.length>0 && <RecipeList/> }
-              </div> */}
     </Box>
 
   )

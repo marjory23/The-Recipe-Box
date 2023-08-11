@@ -71,7 +71,7 @@ function MyRecipe({ content }) {
           />
           <ImageListItemBar
             title={content.title}
-            // subtitle={item.author}
+
             actionIcon={
               <>
 

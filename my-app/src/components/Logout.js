@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { logout } from '../ApiService';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
-// import './Log.css'
+
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -49,9 +49,7 @@ import { resetAllRecipes } from '../store/allRecipesSlice';
   return (
     <>
       <div>
-      {/* <Button variant="contained" color="primary" onClick={handleClickOpen}>
-        Logout
-      </Button> */}
+
       <Dialog
       open={open} onClose={handleClose}
       >

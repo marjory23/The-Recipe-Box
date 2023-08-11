@@ -27,14 +27,7 @@ function RecipeCurrent() {
 
   const recipe = useSelector((state) => state.currentRecipe)
   console.log(recipe);
-  // console.log(recipe.name);
-  // console.log(recipe.thumbnail_url);
-  // console.log(recipe.cook_time_minutes);
-  // console.log(recipe.sections[0].components);
-  // console.log(recipe.instructions);
 
-
-  // const recipe = currentRecipe;
 
   const navigate = useNavigate()
 
@@ -42,9 +35,6 @@ function RecipeCurrent() {
     navigate(-1);
   }
 
-  // const logout = () =>{
-  //   navigate('/logout');
-  // }
 
   return (
     <>
@@ -63,18 +53,14 @@ function RecipeCurrent() {
 
           }
           action={
-            <IconButton aria-label="add to favorites">
-            <CloseIcon onClick={goBack}/>
+            <IconButton
+            aria-label="go back"
+            onClick={goBack}>
+            <CloseIcon />
           </IconButton>
           }
-          // action={
-          //   <IconButton aria-label="add to favorites">
-          //   <FavoriteIcon />
-          // </IconButton>
-          // }
           title={`${recipe.name}`}
           subheader={`${recipe.cook_time_minutes > 0 ? recipe.cook_time_minutes : ''}`}
-          // subheader={`${recipe.cook_time_minutes!=null &&<h6> cooking time: {recipe.cook_time_minutes}</h6>}`}
 
         />
 

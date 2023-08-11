@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Recipe from './Recipe';
-// import './List.css';
+
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
@@ -10,9 +10,7 @@ import { useSelector } from 'react-redux';
 
 
 
-function RecipeList(
-  // { recipes,setCurrentRecipe }
-  ) {
+function RecipeList() {
   const recipes = useSelector((state) => state.allRecipes.recipes);
   const currentSearch = useSelector((state) => state.currentSearch.title);
 
@@ -53,7 +51,7 @@ function RecipeList(
             <Recipe
             recipe={recipe}
             setRecipe={setRecipe}
-            // setCurrentRecipe={setCurrentRecipe}
+      
             />
           </div>
         }))}

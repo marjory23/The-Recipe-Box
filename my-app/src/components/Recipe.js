@@ -12,21 +12,19 @@ import { updateCurrentRecipe } from '../store/currentRecipeSlice'
 function Recipe(
   {
     recipe, setRecipe,
-    // setCurrentRecipe
+  
   }
   ) {
 
   let navigate = useNavigate();
   const dispatch = useDispatch()
-  // const recipe = useSelector((state) => state.currentRecipe)
+
 
   const openRecipe = () =>{
     console.log(recipe)
     dispatch(updateCurrentRecipe(recipe))
     console.log(recipe)
-    // setRecipe(recipe);
 
-    // setCurrentRecipe(recipe);
     navigate('/recipePage');
     console.log('WOW')
   }
