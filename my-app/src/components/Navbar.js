@@ -6,6 +6,7 @@ import Header from './Header'
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateAllRecipes , resetAllRecipes } from '../store/allRecipesSlice';
+import { updateCurrentSearch } from '../store/searchSlice';
 
 
 import Logo from '../Vector.png';
@@ -80,11 +81,12 @@ function Navbar(
   // const [currentRecipe, setCurrentRecipe] = useState({});
 //  const [recipes, setRecipes] = useState([]);
   const recipes = useSelector((state) => state.allRecipes.recipes);
+  const currentSearch = useSelector((state) => state.currentSearch.title);
 
   const [search, setSearch] = useState('');
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(20);
-  const [listSubheader, setListSubheader] = useState('')
+  // const [listSubheader, setListSubheader] = useState('')
 
   const user = useSelector((state) => state.currentUser);
 
@@ -97,7 +99,9 @@ function Navbar(
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     setSearch(e.target.value);
+    dispatch(updateCurrentSearch({ title: search }))
     console.log(recipes)
     await fetchRecipes(search, start, end)
     .then(data => {
@@ -106,7 +110,9 @@ function Navbar(
     })
 
     console.log(search)
-    setListSubheader(search);
+    console.log(currentSearch)
+
+    // setListSubheader(search);
     console.log(recipes)
     setSearch('');
     // navigate('/')

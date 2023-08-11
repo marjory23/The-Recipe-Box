@@ -14,10 +14,13 @@ function RecipeList(
   // { recipes,setCurrentRecipe }
   ) {
   const recipes = useSelector((state) => state.allRecipes.recipes);
+  const currentSearch = useSelector((state) => state.currentSearch.title);
+
   const [recipe, setRecipe] = useState({})
 
   useEffect(() => {
     console.log(recipes)
+    console.log(currentSearch)
   }, [])
 
 
@@ -25,6 +28,9 @@ function RecipeList(
     <Box
     sx={{ mx: 10 }}
     >
+      <ImageListItem key="Subheader" cols={2}>
+        <ListSubheader component="div">{currentSearch}</ListSubheader>
+      </ImageListItem>
       <ImageList
 
       variant="masonry"
@@ -41,6 +47,7 @@ function RecipeList(
 
       // sx={{ width: 500, height: 450 }}
       >
+
         {recipes[0].id != 0 && (recipes.map(recipe => {
           return <div className='single-recipe' key={recipe.id}>
             <Recipe
