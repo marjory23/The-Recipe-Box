@@ -72,7 +72,8 @@ function MyRecipeCurrent() {
         <CardMedia
           component="img"
           height="300"
-          image={`${content && content.image}?w=248&fit=crop&auto=format`}
+          // image={`${content && content.image}?w=248&fit=crop&auto=format`}
+          image={`${content && content.image}`}
           alt={`${content.title}`}
         />
         <CardContent>

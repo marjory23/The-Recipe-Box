@@ -25,7 +25,7 @@ function MyRecipeList() {
 
   useEffect(() => {
     dispatch(resetAllRecipes())
-  }, [])
+  }, [myRecipes])
 
 
   return (
