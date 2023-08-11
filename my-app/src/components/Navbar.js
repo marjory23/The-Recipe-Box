@@ -187,7 +187,6 @@ function Navbar(
 
         >
         <ListIcon
-        // onClick={goToMyRecipesList}
         />
         </IconButton>
         My List</MenuItem>
@@ -202,7 +201,6 @@ function Navbar(
 
         >
           <PlaylistAddIcon
-          // onClick={addRecipe}
           />
         </IconButton>Add Recipe</MenuItem>
     </Menu>
@@ -234,7 +232,6 @@ function Navbar(
 
         >
           <ListIcon
-          // onClick={goToMyRecipesList}
           />
         </IconButton>
 
@@ -249,7 +246,6 @@ function Navbar(
 
         >
           <PlaylistAddIcon
-          // onClick={addRecipe}
           />
         </IconButton>
 
@@ -266,7 +262,6 @@ function Navbar(
 
         >
           <LogoutIcon
-          //  onClick={logout}
            />
         </IconButton>
         <p>Logout</p>

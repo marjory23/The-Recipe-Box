@@ -16,6 +16,11 @@ import Layout from './pages/Layout';
 import MyRecipesPage from './pages/MyRecipesPage';
 import SearchResultPage from './pages/SearchResultPage';
 import AddRecipePage from './pages/AddRecipePage';
+import LoginPage from './pages/LoginPage';
+import LogoutPage from './pages/LogoutPage';
+import RegisterPage from './pages/RegisterPage';
+
+
 
 
 
@@ -41,13 +46,13 @@ function App() {
 
         <Route path='/' element={<MainPage/>}/>
 
-        <Route path='/login' element={<Login/>}/>
+        <Route path='/login' element={<LoginPage/>}/>
 
-        <Route path='/logout' element={<Logout/>}/>
+        <Route path='/logout' element={<LogoutPage/>}/>
 
         <Route path='/myrecipes' element={<MyRecipesPage/>}/>
 
-        <Route path='/Register' element={<Register setUser={setUser}/>} />
+        <Route path='/Register' element={<RegisterPage setUser={setUser}/>} />
 
 
         {/* <Route path='/add' element={<AddRecipe
