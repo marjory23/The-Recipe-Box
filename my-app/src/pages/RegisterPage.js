@@ -1,12 +1,13 @@
 import React from 'react';
-import Layout2 from './Layout2';
+// import Layout2 from './Layout2';
+import Layout from './Layout';
 import Register from '../components/Register'
 
 const RegisterPage = () => {
   return (
-    <Layout2>
+    <Layout>
       <Register/>
-    </Layout2>
+    </Layout>
   );
 };
 

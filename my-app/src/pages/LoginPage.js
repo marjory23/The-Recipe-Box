@@ -1,12 +1,12 @@
 import React from 'react';
-import Layout2 from './Layout2';
+import Layout from './Layout';
 import Login from '../components/Login'
 
 const LoginPage = () => {
   return (
-    <Layout2>
+    <Layout>
       <Login/>
-    </Layout2>
+    </Layout>
   );
 };
 
