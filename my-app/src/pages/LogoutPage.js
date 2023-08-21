@@ -1,12 +1,13 @@
 import React from 'react';
-import Layout2 from './Layout2';
+// import Layout2 from './Layout2';
+import Layout from './Layout';
 import Logout from '../components/Logout'
 
 const LogoutPage = () => {
   return (
-    <Layout2>
+    <Layout>
       <Logout/>
-    </Layout2>
+    </Layout>
   );
 };
 
